@@ -13,7 +13,7 @@
 					<% if user.badge_picture %>
 						<img src="<%= user.badge_picture_url(50, 50) %>" width="50" height="50" alt="<%= user.username %>">
 					<% end %>
-					<%= user.username %>
+					<a href="<%= person_path(user.uid) %>"><%= user.username %></a>
 				</li>
 			<% end %>
 		</ul>

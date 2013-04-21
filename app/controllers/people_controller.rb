@@ -7,6 +7,11 @@ class PeopleController < ApplicationController
     @current_user = CrewCorner::User.current(access_token: @cco_access_token)
   end
 
+  def show
+    @cco_user = CrewCorner::User.find(params[:id], access_token: @cco_access_token)
+    @person = Person.find_by_cco_id(params[:id])
+  end
+
   def search
     @query = params[:q]
 
