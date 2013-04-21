@@ -1,0 +1,14 @@
+# Bundler config
+/.bundle
+
+# Default SQLite database
+/db/*.sqlite3
+
+# Logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Private configs
+/config/database.yml
+/config/initializers/crew_corner_oauth.rb
+/config/initializers/secret_token.rb

@@ -1,0 +1,19 @@
+common: &common
+  adapter: postgresql
+  host: localhost
+  username: crewservicer
+  password: crewservicer
+  pool: 5
+  encoding: unicode
+
+development:
+  <<: *common
+  database: crewservicer_development
+
+test:
+  <<: *common
+  database: crewservicer_test
+
+production:
+  <<: *common
+  database: crewservicer_production

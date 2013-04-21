@@ -1,0 +1,21 @@
+<form method="get" action="<%= search_people_path %>">
+	<input type="text" name="q" value="<%= params[:q] %>" />
+	<input type="submit" value="Sök" />
+</form>
+
+<% unless @users.nil? %>
+	<% if @users.empty? %>
+		<p>Inga matchande personer hittades :(</p>
+	<% else %>
+		<ul>
+			<% @users.each do |user| %>
+				<li>
+					<% if user.badge_picture %>
+						<img src="<%= user.badge_picture_url(50, 50) %>" width="50" height="50" alt="<%= user.username %>">
+					<% end %>
+					<%= user.username %>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+<% end %>
