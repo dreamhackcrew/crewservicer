@@ -14,7 +14,7 @@ everyone in a team and tools restricted to event administrators.
 ### Steps
 
 - Clone repo
-- Set up a user with database creation privileges
+- Set up a database user with database creation privileges
 - `cd crewservicer`
 - Create `config/database.yml`, `config/initializers/crew_corner_oauth.rb`, `config/initializers/secret_token.rb` from examples
 - `bundle`
