@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/kolizz/Code/ruby-crew-corner
+GIT
+  remote: git@github.com:dreamhackcrew/ruby-crew-corner.git
+  revision: f9545b3b370062f33c8295ed1c38b2dbc5469962
   specs:
     crew-corner (0.1.0)
 
