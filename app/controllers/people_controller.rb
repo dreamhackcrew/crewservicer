@@ -1,7 +1,7 @@
 require 'upc_code'
 
 class PeopleController < ApplicationController
-  before_filter :require_authentication
+  before_filter :require_administrator_privileges
 
   def index
     @current_user = CrewCorner::User.current(access_token: @cco_access_token)
