@@ -19,8 +19,7 @@ class Event < ActiveRecord::Base
 
       event.update_attributes(converted_cco_event_attributes(cco_event))
 
-      if event.valid?
-        event.save
+      if event.save
         events << event
       else
         Rails.logger.info "Didn't update event for cco event with id #{new_cco_event.id} because it was invalid"
@@ -30,8 +29,7 @@ class Event < ActiveRecord::Base
     cco_events_hash.each_value do |new_cco_event|
       new_event = Event.new(converted_cco_event_attributes(new_cco_event))
 
-      if new_event.valid?
-        new_event.save
+      if new_event.save
         events << new_event
       else
         Rails.logger.info "Didn't save new cco event with id #{new_cco_event.id} because it was invalid"
