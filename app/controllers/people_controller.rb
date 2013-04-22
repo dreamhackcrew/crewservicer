@@ -17,10 +17,14 @@ class PeopleController < ApplicationController
 
     unless @query.nil?
       if @query =~ /^\d+$/
-        id = @query.length == 12 ? UpcCode.new(@query) : @query
-        user = CrewCorner::User.find(id.to_i, access_token: @cco_access_token)
+        id = (@query.length == 12 ? UpcCode.new(@query) : @query).to_i
+        user = CrewCorner::User.find(id, access_token: @cco_access_token)
 
-        @users = user.nil? ? [] : [ user ]
+        unless user.nil?
+          redirect_to action: :show, id: id
+        else
+          @users = []
+        end
       else
         @users = CrewCorner::User.search(@query, access_token: @cco_access_token)
       end
