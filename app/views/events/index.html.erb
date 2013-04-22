@@ -1,0 +1,15 @@
+<h1>Event</h1>
+
+<form method="post" action="<%= import_events_path %>">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<p><input type="submit" value="Importera event från Crew Corner"></p>
+</form>
+
+<% if @events.empty? %>
+	<p>Importera event från Crew Corner nu!</p>
+<% else %>
+	<% @events.each do |event| %>
+		<h2><%= event.name %></h2>
+		<p><%= event.start %> - <%= event.end %></p>
+	<% end %>
+<% end %>

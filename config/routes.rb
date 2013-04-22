@@ -11,4 +11,10 @@ Crewservicer::Application.routes.draw do
       get 'search'
     end
   end
+
+  resources :events, only: [ :index ] do
+    collection do
+      post 'import'
+    end
+  end
 end
