@@ -5,7 +5,7 @@ everyone in a team and tools restricted to event administrators.
 
 ## Getting started
 
-### Prerequisites
+### Requirements
 
 - Ruby 2.0
 - Bundler
