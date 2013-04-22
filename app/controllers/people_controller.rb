@@ -2,6 +2,7 @@ require 'upc_code'
 
 class PeopleController < ApplicationController
   before_filter :require_administrator_privileges
+  before_filter :set_query, only: :search
 
   def index
     @current_user = CrewCorner::User.current(access_token: @cco_access_token)
@@ -13,21 +14,24 @@ class PeopleController < ApplicationController
   end
 
   def search
-    @query = params[:q]
+    case @query
+    when Integer
+      user = CrewCorner::User.find(@query, access_token: @cco_access_token)
 
-    unless @query.nil?
-      if @query =~ /^\d+$/
-        id = (@query.length == 12 ? UpcCode.new(@query) : @query).to_i
-        user = CrewCorner::User.find(id, access_token: @cco_access_token)
-
-        unless user.nil?
-          redirect_to action: :show, id: id
-        else
-          @users = []
-        end
+      unless user.nil?
+        redirect_to action: :show, id: @query
       else
-        @users = CrewCorner::User.search(@query, access_token: @cco_access_token)
+        @users = []
       end
+    when String
+      @users = CrewCorner::User.search(@query, access_token: @cco_access_token)
     end
+  end
+
+  private
+
+  def set_query
+    @query = params[:q]
+    @query = (@query.length == 12 ? UpcCode.new(@query) : @query).to_i if @query =~ /^\d+$/
   end
 end
