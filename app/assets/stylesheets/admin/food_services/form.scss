@@ -1,0 +1,13 @@
+#dishes {
+  .details {
+
+  }
+
+  .actions {
+    text-align: center;
+  }
+
+  tbody .destroy input[type=text] {
+    text-decoration: line-through;
+  }
+}

@@ -1,0 +1,61 @@
+<%= form_for @food_service do |f| %>
+  <% if @food_service.errors.size > 0 %>
+    <ul>
+    <% @food_service.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <p>
+    <label>
+      <span class="label">Öppnar</span>
+      <%= f.text_field :opens_at %>
+      <span class="hint">ÅÅÅÅ-MM-DD TT:MM (ex.: 2013-06-15 18:00)</span>
+    </label>
+  </p>
+  <p>
+    <label>
+      <span class="label">Stänger</span>
+      <%= f.text_field :closes_at %>
+      <span class="hint">ÅÅÅÅ-MM-DD TT:MM (ex.: 2013-06-15 18:00)</span>
+    </label>
+  </p>
+  <h2>Rätter</h2>
+  <table id="dishes">
+    <thead>
+      <tr>
+          <th>Beskrivning</th>
+          <th>Detaljer</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :dishes do |df| %>
+        <tr>
+          <td class="full-field">
+            <%= df.text_field :description %>
+          </td>
+          <td>
+            <label><%= df.check_box :vegetarian %> Vegetarisk</label>
+            <label><%= df.check_box :lactose_free %> Laktosfri</label>
+            <label><%= df.check_box :gluten_free %> Glutenfri</label>
+          </td>
+          <td>
+            <%= df.hidden_field :id %>
+            <label class="button"><%= df.check_box '_destroy', class: "destroy" %> Ta bort</label>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p><a id="new-dish" class="button" href="#">Lägg till</a></p>
+  <p><input type="submit" value="Spara"> <a href="<%= food_services_path %>">Tillbaka</a></p>
+<% end %>
+
+<% content_for :javascript_init do %>
+  <script type="text/javascript">
+    window.addEvent("domready", function() {
+      new FoodServices.DishesTable($("dishes"), $("new-dish"), <%= @food_service.dishes.size %>)
+    })
+  </script>
+<% end %>

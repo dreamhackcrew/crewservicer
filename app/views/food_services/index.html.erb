@@ -1,0 +1,16 @@
+<h1>Matsedel</h1>
+
+<% @food_services.each do |food_service| %>
+  <section class="content">
+    <h2><%=l food_service.opens_at, format: :short %></h2>
+    <h3>Rätter</h3>
+    <ul>
+        <% food_service.dishes.each do |dish| %>
+          <li><%= dish.description %></li>
+        <% end %>
+    </ul>
+    <p><a href="<%= food_service_path(food_service) %>">Redigera</a></p>
+  </section>
+<% end %>
+
+<p><a class="button" href="<%= new_food_service_path %>">Lägg till servering</a></p>

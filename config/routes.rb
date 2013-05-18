@@ -17,4 +17,6 @@ Crewservicer::Application.routes.draw do
       post 'import'
     end
   end
+
+  resources :food_services, path: "food"
 end

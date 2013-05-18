@@ -1,0 +1,27 @@
+<td class="full-field">
+  <input id="food_service_dishes_attributes_{{sequence}}_description" name="food_service[dishes_attributes][{{sequence}}][description]" size="30" type="text">
+</td>
+<td>
+  <label>
+    <input name="food_service[dishes_attributes][{{sequence}}][vegetarian]" type="hidden" value="0">
+    <input id="food_service_dishes_attributes_{{sequence}}_vegetarian" name="food_service[dishes_attributes][{{sequence}}][vegetarian]" type="checkbox" value="1">
+    Vegetarisk
+  </label>
+  <label>
+    <input name="food_service[dishes_attributes][{{sequence}}][lactose_free]" type="hidden" value="0">
+    <input id="food_service_dishes_attributes_{{sequence}}_lactose_free" name="food_service[dishes_attributes][{{sequence}}][lactose_free]" type="checkbox" value="1">
+    Laktosfri
+  </label>
+  <label>
+    <input name="food_service[dishes_attributes][{{sequence}}][gluten_free]" type="hidden" value="0">
+    <input id="food_service_dishes_attributes_{{sequence}}_gluten_free" name="food_service[dishes_attributes][{{sequence}}][gluten_free]" type="checkbox" value="1">
+    Glutenfri
+  </label>
+</td>
+<td>
+  <label class="button">
+    <input name="food_service[dishes_attributes][{{sequence}}][_destroy]" type="hidden" value="0">
+    <input class="destroy" id="food_service_dishes_attributes_{{sequence}}__destroy" name="food_service[dishes_attributes][{{sequence}}][_destroy]" type="checkbox" value="1">
+    Ta bort
+  </label>
+</td>
