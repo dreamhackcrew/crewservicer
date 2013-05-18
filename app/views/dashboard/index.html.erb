@@ -1,0 +1,18 @@
+<header id="event">
+  <h1>
+    <span class="info-for">Crewinfo</span>
+    <span class="event"><%= @current_event.name %></span>
+  </h1>
+</header>
+
+<% if @next_food_service %>
+  <section class="content">
+    <h2>Nästa måltid</h2>
+    <p><%=l @next_food_service.opens_at, format: :short %></p>
+    <ul>
+      <% @next_food_service.dishes.each do |dish| %>
+        <li><%= dish.description %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>

@@ -2,8 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :authenticate
+  before_filter :set_current_event
 
   protected
+
+  def set_current_event
+    @current_event = Event.active.order('start ASC').first
+  end
 
   def authenticate
     if session[:person_id]

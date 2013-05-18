@@ -1,5 +1,5 @@
 Crewservicer::Application.routes.draw do
-  root to: 'people#index'
+  root to: 'dashboard#index', as: :dashboard
 
   get 'login' => 'sessions#new', as: :login
   get 'logout' => 'sessions#destroy', as: :logout
