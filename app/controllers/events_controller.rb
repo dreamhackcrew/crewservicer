@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :require_administrator_privileges
 
   def index
-    @events = Event.descending_dates
+    @events = Event.order('start DESC')
   end
 
   def import

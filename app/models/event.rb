@@ -1,12 +1,11 @@
 class Event < ActiveRecord::Base
-  attr_accessible :cco_id, :name, :start, :end, :active
+  attr_accessible :cco_id, :name, :start, :end, :construction_start, :teardown_end, :active
 
   validates_uniqueness_of :cco_id
-  validates_presence_of :name, :start, :end
+  validates_presence_of :name, :start, :end, :construction_start, :teardown_end
   validates_inclusion_of :active, in: [ true, false ]
 
   scope :active, where(active: true)
-  scope :descending_dates, order('start DESC')
 
   def self.create_all_from_cco_events(cco_events)
     cco_events_hash = Hash[cco_events.map { |e| [e.id, e] }]
@@ -47,6 +46,8 @@ class Event < ActiveRecord::Base
       name: cco_event.name,
       start: cco_event.start,
       end: cco_event.end,
+      construction_start: cco_event.preparestart,
+      teardown_end: cco_event.prepareend,
       active: cco_event.active
     }
   end

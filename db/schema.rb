@@ -14,13 +14,15 @@
 ActiveRecord::Schema.define(:version => 20130421233801) do
 
   create_table "events", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "cco_id",     :null => false
-    t.string   "name",       :null => false
-    t.date     "start",      :null => false
-    t.date     "end",        :null => false
-    t.boolean  "active",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "cco_id",             :null => false
+    t.string   "name",               :null => false
+    t.date     "start",              :null => false
+    t.date     "end",                :null => false
+    t.date     "construction_start", :null => false
+    t.date     "teardown_end",       :null => false
+    t.boolean  "active",             :null => false
   end
 
   add_index "events", ["active"], :name => "index_events_on_active"
