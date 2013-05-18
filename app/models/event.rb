@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  has_many :food_services
+
   attr_accessible :cco_id, :name, :start, :end, :construction_start, :teardown_end, :active
 
   validates_uniqueness_of :cco_id
