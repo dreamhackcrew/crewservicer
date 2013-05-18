@@ -1,0 +1,26 @@
+@mixin background-gradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+  background-image: -ms-linear-gradient($from, $to);
+}
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -khtml-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin font-dreamhack-normal {
+  font-family: "Dreamhack Normal", sans-serif;;
+  letter-spacing: 1px;
+}
+
+@mixin font-dreamhack-thin {
+  font-family: "Dreamhack Thin", sans-serif;;
+  letter-spacing: 1px;
+}

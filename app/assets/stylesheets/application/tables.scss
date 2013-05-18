@@ -1,0 +1,51 @@
+@import "../variables";
+@import "../mixins";
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  tr {
+    @include background-gradient($orange, darken($orange, 20%));
+  }
+}
+
+th {
+  text-align: left;
+}
+
+tbody {
+  tr:nth-child(odd) {
+    background: $midgrey;
+  }
+  tr:nth-child(even) {
+    background: $midgrey-alt;
+  }
+}
+
+
+td + td, th + th {
+  border-left: 1px solid rgba($white, 0.2);
+}
+
+th, td, td.full-field input[type=text] {
+  padding: 0 10px 0;
+  line-height: 30px;
+}
+
+td.full-field input[type=text] {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  width: 100%;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+td.full-field {
+  padding: 0;
+}

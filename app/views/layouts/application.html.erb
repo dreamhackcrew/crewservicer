@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Crewservicer</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Crewservicer</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "admin" if administrator? %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if administrator? %>
+      <nav id="admin-nav">
+        <ul>
+            <li>
+                <a href="<%= dashboard_path %>">Start</a>
+            </li>
+            <li>
+                <a href="<%= search_people_path %>">Incheckning & utlämning</a>
+            </li>
+            <li>
+                <a href="#">Radios</a>
+            </li>
+            <li>
+                <a href="#">Information</a>
+            </li>
+        </ul>
+      </nav>
+    <% end %>
 
-<%= yield %>
+    <div id="container">
+      <%= yield %>
+    </div>
 
-</body>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "admin" if administrator? %>
+    <%= yield :javascript_init %>
+  </body>
 </html>

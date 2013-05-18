@@ -1,0 +1,32 @@
+@import "../variables";
+@import "../mixins";
+
+body {
+  background: $black;
+}
+
+#event {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 40px 0;
+
+  .info-for {
+    @include font-dreamhack-thin;
+  }
+
+  .event {
+    @include font-dreamhack-normal;
+  }
+}
+
+#container {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+section.content {
+  background: $darkgrey;
+  margin: 20px 0;
+  padding: 20px 30px;
+  border: 1px solid rgba($white, 0.1);
+}

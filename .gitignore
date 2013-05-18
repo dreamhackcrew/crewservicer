@@ -12,3 +12,7 @@
 /config/database.yml
 /config/initializers/crew_corner_oauth.rb
 /config/initializers/secret_token.rb
+
+# Proprietary fonts
+/app/assets/fonts/dreamhack_thin.*
+/app/assets/fonts/dreamhack_normal.*

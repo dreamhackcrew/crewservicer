@@ -1,0 +1,13 @@
+@import "../mixins";
+@import "../variables";
+
+input[type=submit], button, .button {
+  margin: -2px 0;
+  padding: 2px 5px;
+  @include background-gradient($orange, darken($orange, 20%));
+  color: $white;
+  text-decoration: none;
+  cursor: default;
+  @include border-radius(4px);
+}
+

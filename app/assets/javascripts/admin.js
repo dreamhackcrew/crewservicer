@@ -10,6 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require mootools
-//= require mootools_ujs
-//= require_tree ./application
+//= require handlebars.runtime
+//= require_tree ./admin
+//= require_tree ./templates/admin

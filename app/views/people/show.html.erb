@@ -1,15 +1,17 @@
-<h1><%= @cco_user.username %></h1>
+<section class="content">
+  <h1><%= @cco_user.username %></h1>
 
-<p><img src="<%= @cco_user.badge_picture_url(150, 150) %>" width="150" height="150" alt="<%= @cco_user.username %>"></p>
+  <p><img src="<%= @cco_user.badge_picture_url(150, 150) %>" width="150" height="150" alt="<%= @cco_user.username %>"></p>
 
-<p><%= @cco_user.firstname %> <%= @cco_user.lastname %></p>
+  <p><%= @cco_user.firstname %> <%= @cco_user.lastname %></p>
 
-<h2>Crewservicer</h2>
-<% if @person.nil? %>
-	<p><%= @cco_user.username %> har inte lags till i Crewservicer än.</p>
-<% else %>
-	<dl>
-		<dt>Administratör</dt>
-		<dd><% if @person.administrator? %>Ja<% else %>Nej<% end %></dd>
-	</dl>
-<% end %>
+  <h2>Crewservicer</h2>
+  <% if @person.nil? %>
+    <p><%= @cco_user.username %> har inte lags till i Crewservicer än.</p>
+  <% else %>
+    <dl>
+      <dt>Administratör</dt>
+      <dd><% if @person.administrator? %>Ja<% else %>Nej<% end %></dd>
+    </dl>
+  <% end %>
+</section>
