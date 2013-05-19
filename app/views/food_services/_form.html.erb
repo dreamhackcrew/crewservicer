@@ -1,10 +1,14 @@
 <%= form_for @food_service do |f| %>
   <% if @food_service.errors.size > 0 %>
-    <ul>
-    <% @food_service.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-    </ul>
+    <div class="errors">
+      <span class="error-icon icon large">&#9888;</span>
+      <p>Några fält måste korrigeras</p>
+      <ul>
+      <% @food_service.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
   <p>
     <label>

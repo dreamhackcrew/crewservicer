@@ -1,0 +1,29 @@
+@import "../variables";
+
+@font-face {
+  font-family: "Entypo";
+  src: asset-url('entypo.eot', font);
+  src: asset-url('entypo.eot?#iefix', font) format('embedded-opentype'),
+       asset-url('entypo.woff', font) format('woff'),
+       asset-url('entypo.ttf', font) format('truetype'),
+       asset-url('entypo.svg#entypo', font) format('svg');
+}
+
+.icon {
+  font-family: "Entypo";
+  display: inline-block;
+
+  &.inline {
+    line-height: 10px;
+    font-size: 32px;
+  }
+
+  &.large {
+    font-size: 64px;
+    line-height: 32px;
+  }
+
+  &.green {
+    color: $green;
+  }
+}

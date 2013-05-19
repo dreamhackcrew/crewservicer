@@ -30,3 +30,23 @@ section.content {
   padding: 20px 30px;
   border: 1px solid rgba($white, 0.1);
 }
+
+.content-columns {
+  overflow: hidden;
+
+  .column {
+    float: left;
+    box-sizing: border-box;
+
+    &.half-width {
+      width: 50%;
+
+      &:nth-child(odd) {
+        padding-right: 10px;
+      }
+      &:nth-child(even) {
+        padding-left: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+sv:
+  date:
+    today: idag
+    tomorrow: imorgon
+    yesterday: igår
+  time:
+    formats:
+      time: ! '%H:%M'
+      weekday_time: ! '%A %H:%M'

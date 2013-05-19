@@ -5,14 +5,46 @@
   </h1>
 </header>
 
-<% if @next_food_service %>
-  <section class="content">
-    <h2>Nästa måltid</h2>
-    <p><%=l @next_food_service.opens_at, format: :short %></p>
-    <ul>
-      <% @next_food_service.dishes.each do |dish| %>
-        <li><%= dish.description %></li>
+<section class="content">
+  <h2>Kommande måltider</h2>
+  <% if @upcoming_food_services.size > 0 %>
+    <div class="content-columns">
+      <% @upcoming_food_services.each do |food_service| %>
+        <div class="column half-width">
+          <article class="food-service">
+            <% if food_service.open? %>
+              <header class="time-header open">
+                <p>Nu! – <%= distance_of_time_in_hours_and_minutes_to_now(food_service.closes_at) %> kvar</p>
+              </header>
+            <% else %>
+              <header class="time-header upcoming">
+                <p>
+                    <%= human_relatable_time(food_service.opens_at) %> –
+                    <%= distance_of_time_in_hours_and_minutes_to_now(food_service.opens_at) %>
+                </p>
+              </header>
+            <% end %>
+            <ul class="dishes">
+              <% food_service.dishes.each do |dish| %>
+                <li>
+                  <span class="description"><%= dish.description %></span><br>
+                  <% if dish.vegetarian? %>
+                    <span class="detail"><span class="icon inline green">&#127810;</span> Vegetarisk</span>
+                  <% end %>
+                  <% if dish.lactose_free? %>
+                    <span class="detail"><span class="icon inline">&#10003;</span> Laktosfri</span>
+                  <% end %>
+                  <% if dish.gluten_free? %>
+                    <span class="detail"><span class="icon inline">&#10003;</span> Glutenfri</span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </article>
+        </div>
       <% end %>
-    </ul>
-  </section>
-<% end %>
+    </div>
+  <% else %>
+    <p>Det är slut på mat för den här gången.</p>
+  <% end %>
+</section>

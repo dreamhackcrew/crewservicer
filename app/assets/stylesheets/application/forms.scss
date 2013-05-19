@@ -11,3 +11,15 @@ input[type=submit], button, .button {
   @include border-radius(4px);
 }
 
+.errors {
+  position: relative;
+  background: $midgrey;
+  padding: 18px 10px 10px 60px;
+  border-top: 3px solid $orange;
+
+  .error-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+}

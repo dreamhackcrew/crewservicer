@@ -2,7 +2,7 @@
 
 <% @food_services.each do |food_service| %>
   <section class="content">
-    <h2><%=l food_service.opens_at, format: :short %></h2>
+    <h2><%= human_relatable_time(food_service.opens_at, true) %></h2>
     <h3>Rätter</h3>
     <ul>
         <% food_service.dishes.each do |dish| %>

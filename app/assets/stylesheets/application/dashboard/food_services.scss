@@ -1,0 +1,42 @@
+@import "../../mixins";
+@import "../../variables";
+
+.food-service {
+  .time-header {
+    @include font-dreamhack-thin;
+    font-size: $font-size-dreamhack-big;
+    text-transform: uppercase;
+    padding: 0 15px;
+    line-height: 40px;
+    text-shadow: transparentize(#000000, 0.5) 0 0 5px;
+    @include border-radius(3px);
+    margin-bottom: 15px;
+
+    &.open {
+      @include background-gradient(darken($green, 5%), $green);
+      border: 1px solid rgba($white, 0.3);
+    }
+
+    &.upcoming {
+      @include background-gradient(darken($midgrey-alt, 5%), $midgrey-alt);
+      border: 1px solid rgba($white, 0.1);
+    }
+  }
+
+  .dishes {
+    list-style: none;
+    padding: 0 15px;
+
+    li + li {
+      margin-top: 10px;
+    }
+  }
+
+  .description {
+    font-weight: bold;
+  }
+
+  .detail + .detail {
+    margin-left: 5px;
+  }
+}
