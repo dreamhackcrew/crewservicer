@@ -14,4 +14,15 @@
       <dd><% if @person.administrator? %>Ja<% else %>Nej<% end %></dd>
     </dl>
   <% end %>
+
+  <h2>Eventinfo</h2>
+    <% if @event_info.nil? %>
+      <p><%= @cco_user.username %> har inte angett eventinfo.</p>
+    <% else %>
+      <dl>
+        <dt>Incheckad</dt>
+        <dd><% if @event_info.checkedin %>Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %><% else %>Nej<% end %></dd>
+
+      </dl>
+    <% end %>
 </section>
