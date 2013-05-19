@@ -30,7 +30,7 @@ class FoodServicesController < ApplicationController
     if @food_service.save
       redirect_to @food_service
     else
-      render action: :edit
+      render action: :show
     end
   end
 
