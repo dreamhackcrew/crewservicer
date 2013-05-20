@@ -10,6 +10,7 @@
 
 # Private configs
 /config/database.yml
+/config/unicorn.rb
 /config/initializers/crew_corner_oauth.rb
 /config/initializers/secret_token.rb
 
