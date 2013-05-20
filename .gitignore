@@ -12,6 +12,7 @@
 /config/database.yml
 /config/unicorn.rb
 /config/deploy.rb
+/config/newrelic.yml
 /config/initializers/crew_corner_oauth.rb
 /config/initializers/secret_token.rb
 

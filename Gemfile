@@ -18,6 +18,9 @@ end
 
 gem 'mootools-rails', '< 2.0'
 
+# New Relic monitoring
+gem 'newrelic_rpm'
+
 # Unicorn as app server
 gem 'unicorn'
 

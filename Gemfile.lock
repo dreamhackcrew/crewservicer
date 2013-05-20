@@ -75,6 +75,7 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.2.96)
     oauth (0.4.7)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -142,6 +143,7 @@ DEPENDENCIES
   crew-corner!
   handlebars_assets
   mootools-rails (< 2.0)
+  newrelic_rpm
   oauth
   pg
   rails (~> 3.2)
