@@ -12,4 +12,4 @@
 //
 //= require mootools
 //= require mootools_ujs
-//= require_tree ./application
+//= require_tree ./application/
