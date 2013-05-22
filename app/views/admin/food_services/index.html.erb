@@ -9,8 +9,8 @@
           <li><%= dish.description %></li>
         <% end %>
     </ul>
-    <p><a href="<%= food_service_path(food_service) %>">Redigera</a></p>
+    <p><a href="<%= admin_food_service_path(food_service) %>">Redigera</a></p>
   </section>
 <% end %>
 
-<p><a class="button" href="<%= new_food_service_path %>">Lägg till servering</a></p>
+<p><a class="button" href="<%= new_admin_food_service_path %>">Lägg till servering</a></p>

@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Admin::EventsController < ApplicationController
   before_filter :require_administrator_privileges
 
   def index

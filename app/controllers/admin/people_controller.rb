@@ -1,6 +1,6 @@
 require 'upc_code'
 
-class PeopleController < ApplicationController
+class Admin::PeopleController < ApplicationController
   before_filter :require_administrator_privileges
   before_filter :set_query, only: :search
 

@@ -1,4 +1,4 @@
-class FoodServicesController < ApplicationController
+class Admin::FoodServicesController < ApplicationController
   before_filter :require_administrator_privileges
   before_filter :find_food_service, only: [ :show, :update ]
 
@@ -15,7 +15,7 @@ class FoodServicesController < ApplicationController
     @food_service.event = @current_event
 
     if @food_service.save
-      redirect_to @food_service
+      redirect_to [ :admin, @food_service ]
     else
       render action: :new
     end
@@ -28,7 +28,7 @@ class FoodServicesController < ApplicationController
     @food_service.update_attributes(params[:food_service])
 
     if @food_service.save
-      redirect_to @food_service
+      redirect_to [ :admin, @food_service ]
     else
       render action: :show
     end

@@ -6,17 +6,19 @@ Crewservicer::Application.routes.draw do
   get 'login/redirect' => 'sessions#create', as: :oauth_redirect
   get 'login/callback' => 'sessions#callback', as: :oauth_callback
 
-  resources :people, only: [ :index, :show ] do
-    collection do
-      get 'search'
+  namespace :admin do
+    resources :people, only: [ :index, :show ] do
+      collection do
+        get 'search'
+      end
     end
-  end
 
-  resources :events, only: [ :index ] do
-    collection do
-      post 'import'
+    resources :events, only: [ :index ] do
+      collection do
+        post 'import'
+      end
     end
-  end
 
-  resources :food_services, path: "food"
+    resources :food_services, path: "food"
+  end
 end
