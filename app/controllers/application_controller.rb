@@ -35,6 +35,6 @@ class ApplicationController < ActionController::Base
   end
 
   def render_not_found
-    render file: 'public/404', status: 404, layout: false
+    render 'errors/not_found', status: 404
   end
 end

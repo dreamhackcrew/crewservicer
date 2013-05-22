@@ -10,6 +10,9 @@ class Admin::PeopleController < ApplicationController
 
   def show
     @cco_user = CrewCorner::User.find(params[:id], access_token: @cco_access_token)
+
+    render_not_found if @cco_user.nil?
+
     @event_info = CrewCorner::EventInfo.find(params[:id], @current_event.cco_id, access_token: @cco_access_token)
     @person = Person.find_by_cco_id(params[:id])
   end

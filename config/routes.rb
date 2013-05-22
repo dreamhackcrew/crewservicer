@@ -23,4 +23,8 @@ Crewservicer::Application.routes.draw do
       resources :food_services, path: "maltider"
     end
   end
+
+  match '404' => 'errors#not_found'
+  match '422' => 'errors#change_rejected'
+  match '500' => 'errors#server_error'
 end
