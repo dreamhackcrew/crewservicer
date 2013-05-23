@@ -17,7 +17,7 @@
       border: 1px solid rgba($white, 0.3);
     }
 
-    &.upcoming {
+    &.normal {
       @include background-gradient(darken($midgrey-alt, 5%), $midgrey-alt);
       border: 1px solid rgba($white, 0.1);
     }

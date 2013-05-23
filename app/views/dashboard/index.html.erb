@@ -17,7 +17,7 @@
                 <p>Nu! – <%= distance_of_time_in_hours_and_minutes_to_now(food_service.closes_at) %> kvar</p>
               </header>
             <% else %>
-              <header class="time-header upcoming">
+              <header class="time-header normal">
                 <p>
                     <%= human_relatable_time(food_service.opens_at) %> –
                     <%= distance_of_time_in_hours_and_minutes_to_now(food_service.opens_at) %>

@@ -3,12 +3,13 @@
 
 body {
   background: $black;
+  padding: 40px 0;
 }
 
 #event {
   text-transform: uppercase;
   text-align: center;
-  margin: 40px 0;
+  margin-bottom: 40px;
 
   .info-for {
     @include font-dreamhack-thin;

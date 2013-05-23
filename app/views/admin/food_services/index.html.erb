@@ -1,15 +1,25 @@
 <h1>Måltider</h1>
 
 <% @food_services.each do |food_service| %>
-  <section class="content">
-    <h2><%= human_relatable_time(food_service.opens_at, true) %></h2>
-    <h3>Rätter</h3>
-    <ul>
-        <% food_service.dishes.each do |dish| %>
-          <li><%= dish.description %></li>
-        <% end %>
+  <section class="content food-service">
+    <h2 class="time-header normal"><%= human_relatable_time(food_service.opens_at, true) %></h2>
+    <ul class="dishes">
+      <% food_service.dishes.each do |dish| %>
+        <li>
+          <span class="description"><%= dish.description %></span><br>
+          <% if dish.vegetarian? %>
+            <span class="detail"><span class="icon inline green">&#127810;</span> Vegetarisk</span>
+          <% end %>
+          <% if dish.lactose_free? %>
+            <span class="detail"><span class="icon inline">&#10003;</span> Laktosfri</span>
+          <% end %>
+          <% if dish.gluten_free? %>
+            <span class="detail"><span class="icon inline">&#10003;</span> Glutenfri</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
-    <p><a href="<%= admin_food_service_path(food_service) %>">Redigera</a></p>
+    <p><a class="button" href="<%= admin_food_service_path(food_service) %>">Redigera</a></p>
   </section>
 <% end %>
 
