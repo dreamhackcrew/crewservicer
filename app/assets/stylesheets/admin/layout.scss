@@ -2,7 +2,7 @@
 @import "../mixins";
 
 body {
-  padding-top: 40px;
+  padding-top: 80px;
 }
 
 #admin-nav {
@@ -17,6 +17,7 @@ body {
   text-transform: uppercase;
   @include background-gradient($orange, darken($orange, 20%));
   color: $white;
+  z-index: 1;
 
   ul {
     padding: 0;
@@ -35,5 +36,54 @@ body {
     display: block;
     text-decoration: none;
     border-right: 1px solid rgba($white, 0.2);
+  }
+}
+
+.subnav #container {
+  padding-left: 230px;
+  max-width: 770px;
+}
+
+#subnav {
+  position: absolute;
+  left: 0;
+
+  .fixed-holder {
+    position: fixed;
+    width: 180px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  h2, li a {
+    font-size: $font-size-dreamhack-normal;
+    padding: 0 10px;
+    line-height: 30px;
+    border: 1px solid rgba($white, 0.1);
+  }
+
+  h2 {
+    @include background-gradient(darken($midgrey-alt, 5%), $midgrey-alt);
+    border-bottom: 0;
+  }
+
+  li a:link, li a:visited {
+    @include font-dreamhack-thin;
+    text-transform: uppercase;
+    display: block;
+    @include background-gradient(darken($midgrey, 5%), $midgrey);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  li + li a {
+    border-top: 0;
   }
 }

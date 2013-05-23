@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag "admin" if administrator? %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<% if content_for? :subnav %>subnav<% end %>">
     <% if administrator? %>
       <nav id="admin-nav">
         <ul>
@@ -20,13 +20,24 @@
                 <a href="#">Radios</a>
             </li>
             <li>
-                <a href="#">Information</a>
+                <a href="<%= admin_food_services_path %>">Information</a>
+            </li>
+            <li>
+                <a href="<%= admin_events_path %>">System</a>
             </li>
         </ul>
       </nav>
     <% end %>
 
     <div id="container">
+      <% if content_for? :subnav %>
+        <nav id="subnav">
+          <div class="fixed-holder">
+            <%= yield :subnav %>
+          </div>
+        </nav>
+      <% end %>
+
       <%= yield %>
     </div>
 

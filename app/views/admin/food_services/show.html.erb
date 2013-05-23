@@ -1,5 +1,9 @@
-<h1>Redigera matservering</h1>
+<h1>Redigera måltid</h1>
 
 <section class="content">
   <%= render "form" %>
 </section>
+
+<% content_for :subnav do %>
+  <%= render 'admin/information_subnav' %>
+<% end %>

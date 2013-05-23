@@ -13,3 +13,7 @@
 		<p><%= event.start %> - <%= event.end %></p>
 	<% end %>
 <% end %>
+
+<% content_for :subnav do %>
+  <%= render 'admin/system_subnav' %>
+<% end %>

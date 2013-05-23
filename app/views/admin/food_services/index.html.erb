@@ -1,4 +1,4 @@
-<h1>Matsedel</h1>
+<h1>Måltider</h1>
 
 <% @food_services.each do |food_service| %>
   <section class="content">
@@ -14,3 +14,7 @@
 <% end %>
 
 <p><a class="button" href="<%= new_admin_food_service_path %>">Lägg till servering</a></p>
+
+<% content_for :subnav do %>
+  <%= render 'admin/information_subnav' %>
+<% end %>

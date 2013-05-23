@@ -1,5 +1,9 @@
-<h1>Ny matservering</h1>
+<h1>Ny måltid</h1>
 
 <section class="content">
   <%= render "form" %>
 </div>
+
+<% content_for :subnav do %>
+  <%= render 'admin/information_subnav' %>
+<% end %>
