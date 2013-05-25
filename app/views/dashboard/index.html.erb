@@ -11,40 +11,12 @@
     <div class="content-columns">
       <% @upcoming_food_services.each do |food_service| %>
         <div class="column half-width">
-          <article class="food-service">
-            <% if food_service.open? %>
-              <header class="time-header open">
-                <p>Nu! – <%= distance_of_time_in_hours_and_minutes_to_now(food_service.closes_at) %> kvar</p>
-              </header>
-            <% else %>
-              <header class="time-header normal">
-                <p>
-                    <%= human_relatable_time(food_service.opens_at) %> –
-                    <%= distance_of_time_in_hours_and_minutes_to_now(food_service.opens_at) %>
-                </p>
-              </header>
-            <% end %>
-            <ul class="dishes">
-              <% food_service.dishes.each do |dish| %>
-                <li>
-                  <span class="description"><%= dish.description %></span><br>
-                  <% if dish.vegetarian? %>
-                    <span class="detail"><span class="icon inline green">&#127810;</span> Vegetarisk</span>
-                  <% end %>
-                  <% if dish.lactose_free? %>
-                    <span class="detail"><span class="icon inline">&#10003;</span> Laktosfri</span>
-                  <% end %>
-                  <% if dish.gluten_free? %>
-                    <span class="detail"><span class="icon inline">&#10003;</span> Glutenfri</span>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </article>
+          <%= render 'food_service', food_service: food_service %>
         </div>
       <% end %>
     </div>
   <% else %>
     <p>Det är slut på mat för den här gången.</p>
   <% end %>
+  <p><a href="<%= food_services_path %>">Hela matsedeln</a></p>
 </section>

@@ -6,6 +6,8 @@ Crewservicer::Application.routes.draw do
   get 'login/redirect' => 'sessions#create', as: :oauth_redirect
   get 'login/callback' => 'sessions#callback', as: :oauth_callback
 
+  get 'mat' => 'dashboard#food_services', as: :food_services
+
   scope path_names: { :new => "ny", :edit => "redigera" } do
     namespace :admin do
       resources :people, only: [ :index, :show ], path: 'folk' do

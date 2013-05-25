@@ -1,0 +1,22 @@
+<h1>Matsedel</h1>
+
+<% if @upcoming_food_services.size > 0 %>
+  <% @upcoming_food_services.each do |food_service| %>
+    <section class="content">
+      <%= render 'food_service', food_service: food_service %>
+    </section>
+  <% end %>
+<% else %>
+  <p>Det är slut på mat för den här gången.</p>
+<% end %>
+
+<% if @past_food_services.size > 0 %>
+  <h2>Tidigare måltider</h2>
+  <% @past_food_services.each do |food_service| %>
+    <section class="content">
+      <%= render 'food_service', food_service: food_service %>
+    </section>
+  <% end %>
+<% else %>
+  <p>Det är slut på mat för den här gången.</p>
+<% end %>
