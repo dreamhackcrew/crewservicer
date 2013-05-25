@@ -5,7 +5,7 @@ class Admin::PeopleController < ApplicationController
   before_filter :set_query, only: :search
 
   def index
-    @current_user = CrewCorner::User.current(access_token: @cco_access_token)
+    @people = Person.order('administrator DESC, username ASC').all
   end
 
   def show

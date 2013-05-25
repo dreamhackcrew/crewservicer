@@ -1,1 +1,18 @@
-<h1>Hej <%= @current_user.username %></h1>
+<h1>Folk</h1>
+
+<section class="content">
+  <p>Listan innehåller folk som har loggat in i Crewservicer.</p>
+
+  <ul>
+    <% @people.each do |person| %>
+      <li>
+          <a href="<%= admin_person_path(person.cco_id) %>"><%= person.username %></a>
+          <% if person.administrator? %>(Administratör)<% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<% content_for :subnav do %>
+  <%= render 'admin/system_subnav' %>
+<% end %>
