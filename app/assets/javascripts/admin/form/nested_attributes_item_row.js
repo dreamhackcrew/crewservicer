@@ -1,4 +1,4 @@
-FoodServices.DishRow = new Class({
+Form.NestedAttributesItemRow = new Class({
   initialize: function(element) {
     this.element = element;
 

@@ -11,5 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require handlebars.runtime
+//= require_tree ./admin/form/
 //= require_tree ./admin/
 //= require_tree ./templates/admin/

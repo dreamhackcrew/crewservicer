@@ -59,7 +59,7 @@
 <% content_for :javascript_init do %>
   <script type="text/javascript">
     window.addEvent("domready", function() {
-      new FoodServices.DishesTable($("dishes"), $("new-dish"), <%= @food_service.dishes.size %>)
+      new Form.NestedAttributesTable($("dishes"), $("new-dish"), FoodServices.NewDishRow, <%= @food_service.dishes.size %>)
     })
   </script>
 <% end %>

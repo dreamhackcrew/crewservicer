@@ -1,13 +1,7 @@
 FoodServices.NewDishRow = new Class({
-  Extends: FoodServices.DishRow,
+  Extends: Form.NestedAttributesNewItemRow,
 
   initialize: function(sequence) {
-    var markup = HandlebarsTemplates["admin/food_services/dish_list_item"]({
-      sequence: sequence
-    });
-
-    var element = new Element("tr").set("html", markup);
-
-    this.parent(element);
+    this.parent("admin/food_services/new_dish_row", sequence);
   }
 });
