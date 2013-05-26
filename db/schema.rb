@@ -74,10 +74,12 @@ ActiveRecord::Schema.define(:version => 20130525144047) do
     t.boolean  "headset_accessory",        :null => false
     t.datetime "pickup",                   :null => false
     t.datetime "return",                   :null => false
+    t.integer  "radio_id"
     t.datetime "picked_up_at"
     t.datetime "returned_at"
   end
 
+  add_index "radio_loans", ["radio_id"], :name => "index_radio_loans_on_radio_id"
   add_index "radio_loans", ["radio_order_id"], :name => "index_radio_loans_on_radio_order_id"
 
   create_table "radio_orders", :force => true do |t|
@@ -93,10 +95,8 @@ ActiveRecord::Schema.define(:version => 20130525144047) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "serial_number"
-    t.integer  "radio_loan_id"
   end
 
-  add_index "radios", ["radio_loan_id"], :name => "index_radios_on_radio_loan_id", :unique => true
   add_index "radios", ["serial_number"], :name => "index_radios_on_serial_number"
 
 end

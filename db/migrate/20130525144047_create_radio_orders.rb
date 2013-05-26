@@ -17,19 +17,19 @@ class CreateRadioOrders < ActiveRecord::Migration
       t.boolean :headset_accessory, null: false
       t.datetime :pickup, null: false
       t.datetime :return, null: false
+      t.references :radio
       t.datetime :picked_up_at
       t.datetime :returned_at
     end
 
     add_index :radio_loans, :radio_order_id
+    add_index :radio_loans, :radio_id
 
     create_table :radios do |t|
       t.timestamps
       t.string :serial_number
-      t.references :radio_loan
     end
 
     add_index :radios, :serial_number
-    add_index :radios, :radio_loan_id, unique: true
   end
 end

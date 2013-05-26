@@ -1,3 +1,3 @@
 class Radio < ActiveRecord::Base
-  belongs_to :radio_loan
+  has_many :radio_loans
 end
