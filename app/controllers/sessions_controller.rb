@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def callback
     cco_user = CrewCorner::User.current(access_token: @access_token)
 
-    person = Person.find_or_create_by_cco_user(cco_user)
+    person = Person.find_or_update_by_cco_user(cco_user)
 
     person.cco_access_token = @access_token.token
     person.cco_access_token_secret = @access_token.secret

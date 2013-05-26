@@ -3,18 +3,27 @@ require 'upc_code'
 class Admin::PeopleController < ApplicationController
   before_filter :require_administrator_privileges
   before_filter :set_query, only: :search
+  before_filter :set_cco_user, only: [ :show, :update ]
 
   def index
     @people = Person.order('administrator DESC, username ASC').all
   end
 
   def show
-    @cco_user = CrewCorner::User.find(params[:id], access_token: @cco_access_token)
-
-    render_not_found if @cco_user.nil?
-
     @event_info = CrewCorner::EventInfo.find(params[:id], @current_event.cco_id, access_token: @cco_access_token)
-    @person = Person.find_by_cco_id(params[:id])
+    @person = Person.find_or_update_by_cco_user(@cco_user)
+  end
+
+  def update
+    @person = Person.find_or_update_by_cco_user(@cco_user)
+    @person.update_attributes(params[:person])
+
+    if @person.save
+      redirect_to admin_person_path(@person)
+    else
+      @event_info = CrewCorner::EventInfo.find(params[:id], @current_event.cco_id, access_token: @cco_access_token)
+      render action: :show
+    end
   end
 
   def search
@@ -37,5 +46,11 @@ class Admin::PeopleController < ApplicationController
   def set_query
     @query = params[:q]
     @query = (@query.length == 12 ? UpcCode.new(@query) : @query).to_i if @query =~ /^\d+$/
+  end
+
+  def set_cco_user
+    @cco_user = CrewCorner::User.find(params[:id], access_token: @cco_access_token)
+
+    render_not_found if @cco_user.nil?
   end
 end

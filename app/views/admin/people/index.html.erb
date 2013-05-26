@@ -6,7 +6,7 @@
   <ul>
     <% @people.each do |person| %>
       <li>
-          <a href="<%= admin_person_path(person.cco_id) %>"><%= person.username %></a>
+          <a href="<%= admin_person_path(person) %>"><%= person.username %></a>
           <% if person.administrator? %>(Administratör)<% end %>
       </li>
     <% end %>

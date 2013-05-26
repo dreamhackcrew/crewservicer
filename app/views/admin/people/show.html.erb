@@ -4,25 +4,31 @@
   <p><img src="<%= @cco_user.badge_picture_url(150, 150) %>" width="150" height="150" alt="<%= @cco_user.username %>"></p>
 
   <p><%= @cco_user.firstname %> <%= @cco_user.lastname %></p>
+</section>
 
+<section class="content">
   <h2>Crewservicer</h2>
-  <% if @person.nil? %>
-    <p><%= @cco_user.username %> har inte lags till i Crewservicer än.</p>
+
+  <%= form_for [ :admin, @person ], method: :put, url: admin_person_path(@cco_user.uid) do |f| %>
+    <p><%= f.check_box :administrator %> Administratör</p>
+
+    <% unless @person.persisted? %>
+      <p><%= @cco_user.username %> har inte lags till i Crewservicer än.</p>
+    <% end %>
+
+    <p><input type="submit" value="<% if @person.persisted? %>Spara<% else %>Lägg till och spara<% end %>"></p>
+  <% end %>
+</section>
+
+<section class="content">
+  <h2>Eventinfo</h2>
+
+  <% if @event_info.nil? %>
+    <p><%= @cco_user.username %> har inte angivit eventinfo.</p>
   <% else %>
     <dl>
-      <dt>Administratör</dt>
-      <dd><% if @person.administrator? %>Ja<% else %>Nej<% end %></dd>
+      <dt>Incheckad</dt>
+      <dd><% if @event_info.checkedin %>Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %><% else %>Nej<% end %></dd>
     </dl>
   <% end %>
-
-  <h2>Eventinfo</h2>
-    <% if @event_info.nil? %>
-      <p><%= @cco_user.username %> har inte angett eventinfo.</p>
-    <% else %>
-      <dl>
-        <dt>Incheckad</dt>
-        <dd><% if @event_info.checkedin %>Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %><% else %>Nej<% end %></dd>
-
-      </dl>
-    <% end %>
 </section>

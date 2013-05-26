@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :cco_id, :username
+  attr_accessible :cco_id, :username, :administrator
 
   validates_numericality_of :cco_id
   validates_presence_of :username
@@ -7,17 +7,16 @@ class Person < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  def self.find_or_create_by_cco_user(cco_user)
-    person = Person.find_by_cco_id(cco_user.uid)
+  def self.find_or_update_by_cco_user(cco_user)
+    person = Person.find_or_initialize_by_cco_id(cco_user.uid)
 
-    if person.nil?
-      person = Person.create(
-        cco_id: cco_user.uid,
-        username: cco_user.username
-      )
-    end
+    person.username = cco_user.username
 
     person
+  end
+
+  def to_param
+    cco_id
   end
 
   def set_defaults
