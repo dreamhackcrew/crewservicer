@@ -7,3 +7,11 @@ sv:
     formats:
       time: ! '%H:%M'
       weekday_time: ! '%A %H:%M'
+  activerecord:
+    errors:
+      models:
+        radio_loan:
+          attributes:
+            radio_id:
+              already_in_use: används redan
+              required_when_picked_up: måste anges vid utlämning

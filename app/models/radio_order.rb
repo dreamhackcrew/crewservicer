@@ -4,4 +4,6 @@ class RadioOrder < ActiveRecord::Base
 
   attr_accessible :description, :radio_loans_attributes
   accepts_nested_attributes_for :radio_loans, allow_destroy: true
+
+  validates_presence_of :description
 end

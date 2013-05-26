@@ -6,9 +6,11 @@
     <thead>
       <tr>
           <th>Beskrivning</th>
-          <th>Upphämtning</th>
-          <th>Tillbakalämning</th>
+          <th>Period</th>
           <th>Tillbehör</th>
+          <th>Status</th>
+          <th>Serienummer</th>
+          <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,15 +20,40 @@
             <%= radio_loan.description %>
           </td>
           <td>
-            <%=l radio_loan.pickup, format: :short %>
-          </td>
-          <td>
+            <%=l radio_loan.pickup, format: :short %> -
             <%=l radio_loan.return, format: :short %>
           </td>
           <td>
             <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
             <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
             <% if radio_loan.headset_accessory? %>Hörlur<% end %>
+          </td>
+          <td>
+            <% case radio_loan.status when :returned %>
+              Tillbakalämnad <%=l radio_loan.returned_at, format: :short %>
+            <% when :picked_up %>
+              Utlämnad <%=l radio_loan.picked_up_at, format: :short %>
+            <% when :prepared %>
+              Förberedd
+            <% when :new %>
+              Ny
+            <% end %>
+          </td>
+          <td>
+            <% if radio_loan.radio %>
+              <%= radio_loan.radio.serial_number %>
+            <% else %>
+              –
+            <% end %>
+          </td>
+          <td>
+            <a class="button" href="<%= admin_radio_order_radio_loan_path(@radio_order, radio_loan) %>">
+            <% case radio_loan.status when :new %>
+              Förbered
+            <% else %>
+              Visa
+            <% end %>
+            </a>
           </td>
         </tr>
       <% end %>

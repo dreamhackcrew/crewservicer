@@ -28,6 +28,12 @@ Crewservicer::Application.routes.draw do
         member do
           post 'pickup', path: 'hamta'
         end
+
+        resources :radio_loans, only: [ :show ], path: 'radios' do
+          member do
+            post 'bind_radio', path: 'koppla_radio'
+          end
+        end
       end
     end
   end

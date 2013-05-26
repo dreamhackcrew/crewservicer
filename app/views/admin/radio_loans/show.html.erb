@@ -1,0 +1,65 @@
+<h1>Radio</h1>
+
+<section class="content">
+  <dl>
+    <dt>Beskrivning</dt>
+    <dd>
+      <%= @radio_order.description %> – <%= @radio_loan.description %>
+    </dd>
+    <dt>Period</dt>
+    <dd>
+      <%=l @radio_loan.pickup, format: :short %> -
+      <%=l @radio_loan.return, format: :short %>
+    </dd>
+    <dt>Tillbehör</dt>
+    <dd>
+      <% if @radio_loan.remote_speaker_accessory? %>Monofon<% end %>
+      <% if @radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
+      <% if @radio_loan.headset_accessory? %>Hörlur<% end %>
+    </dd>
+    <dt>Status</dt>
+    <dd>
+      <% case @radio_loan.status when :returned %>
+        Tillbakalämnad <%=l @radio_loan.returned_at, format: :short %>
+      <% when :picked_up %>
+        Utlämnad <%=l @radio_loan.picked_up_at, format: :short %>
+      <% when :prepared %>
+        Förberedd
+      <% when :new %>
+        Ny
+      <% end %>
+    </dd>
+    <dt>Serienummer</dt>
+    <dd>
+      <% if @radio_loan.radio %>
+        <%= @radio_loan.radio.serial_number %>
+      <% else %>
+        –
+      <% end %>
+    </dd>
+  </dl>
+</section>
+
+<% if @radio_loan.radio_id_was.nil? %>
+  <section class="content">
+    <% if @radio_loan.errors.size > 0 %>
+      <div class="errors">
+        <span class="error-icon icon large">&#9888;</span>
+        <p>Några fält måste korrigeras</p>
+        <ul>
+        <% @radio_loan.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h2>Förbered radio</h2>
+    <%= form_tag bind_radio_admin_radio_order_radio_loan_path(@radio_order, @radio_loan) do %>
+      <label>
+          <span class="label">Serienummer</span>
+          <%= text_field_tag :radio_serial_number, params[:radio_serial_number] %>
+      </label>
+      <p><input type="submit" value="Koppla"></p>
+    <% end %>
+  </section>
+<% end %>
