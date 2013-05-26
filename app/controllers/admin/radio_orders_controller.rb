@@ -28,9 +28,7 @@ class Admin::RadioOrdersController < ApplicationController
   end
 
   def update
-    @radio_order.update_attributes(params[:radio_order])
-
-    if @radio_order.save
+    if @radio_order.update_attributes(params[:radio_order])
       redirect_to edit_admin_radio_order_path(@radio_order)
     else
       render action: :edit
@@ -40,6 +38,6 @@ class Admin::RadioOrdersController < ApplicationController
   private
 
   def set_radio_order
-    @radio_order = RadioOrder.find(params[:id])
+    @radio_order = RadioOrder.includes(:radio_loans => [ :radio ]).find(params[:id])
   end
 end
