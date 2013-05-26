@@ -22,7 +22,7 @@ Crewservicer::Application.routes.draw do
         end
       end
 
-      resources :food_services, path: "maltider"
+      resources :food_services, except: [ :edit ], path: "maltider"
     end
   end
 
