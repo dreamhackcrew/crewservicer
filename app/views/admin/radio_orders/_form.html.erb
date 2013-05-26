@@ -1,0 +1,65 @@
+<%= form_for [ :admin, @radio_order ] do |f| %>
+  <% if @radio_order.errors.size > 0 %>
+    <div class="errors">
+      <span class="error-icon icon large">&#9888;</span>
+      <p>Några fält måste korrigeras</p>
+      <ul>
+      <% @radio_order.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <label>
+      <span class="label">Beskrivning</span>
+      <%= f.text_field :description %>
+    </label>
+  </p>
+  <h2>Radios</h2>
+  <table id="radio-loans">
+    <thead>
+      <tr>
+          <th>Beskrivning</th>
+          <th>Upphämtning</th>
+          <th>Tillbakalämning</th>
+          <th>Tillbehör</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :radio_loans do |rf| %>
+        <tr>
+          <td class="full-field">
+            <%= rf.text_field :description %>
+          </td>
+          <td class="full-field">
+            <%= rf.text_field :pickup %>
+          </td>
+          <td class="full-field">
+            <%= rf.text_field :return %>
+          </td>
+          <td>
+            <label><%= rf.check_box :remote_speaker_accessory %> Monofon</label>
+            <label><%= rf.check_box :earpiece_accessory %> Öronsnäcka</label>
+            <label><%= rf.check_box :headset_accessory %> Hörlur</label>
+          </td>
+          <td>
+            <%= rf.hidden_field :id %>
+            <label class="button"><%= rf.check_box '_destroy', class: "destroy" %> Ta bort</label>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p><a id="new-radio-loan" class="button" href="#">Lägg till</a></p>
+  <p><input type="submit" value="Spara"> <a href="<%= admin_radio_orders_path %>">Tillbaka</a></p>
+<% end %>
+
+<% content_for :javascript_init do %>
+  <script type="text/javascript">
+    window.addEvent("domready", function() {
+      new Form.NestedAttributesTable($("radio-loans"), $("new-radio-loan"), RadioOrders.NewRadioLoanRow, <%= @radio_order.radio_loans.size %>)
+    })
+  </script>
+<% end %>

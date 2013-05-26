@@ -1,0 +1,25 @@
+<h1>Radiobeställningar</h1>
+
+<section class="content">
+  <% if @radio_orders.size > 0 %>
+    <table id="dishes">
+      <thead>
+        <tr>
+            <th>Beskrivning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @radio_orders.each do |radio_order| %>
+          <tr>
+            <td>
+              <a href="<%= admin_radio_order_path(radio_order) %>"><%= radio_order.description %></a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Inga radiobeställningar inkomna för det här eventet.</p>
+  <% end %>
+  <p><a href="<%= new_admin_radio_order_path %>" class="button">Ny radiobeställning</a></p>
+</section>

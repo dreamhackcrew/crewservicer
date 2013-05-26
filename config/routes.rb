@@ -23,6 +23,12 @@ Crewservicer::Application.routes.draw do
       end
 
       resources :food_services, except: [ :edit ], path: "maltider"
+
+      resources :radio_orders, path: 'radiobestallningar' do
+        member do
+          post 'pickup', path: 'hamta'
+        end
+      end
     end
   end
 

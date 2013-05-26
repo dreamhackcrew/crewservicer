@@ -1,0 +1,36 @@
+<h1>Radiobeställning</h1>
+<section class="content">
+  <p>Beskrivning: <%= @radio_order.description %></p>
+  <h2>Radios</h2>
+  <table id="radio-loans">
+    <thead>
+      <tr>
+          <th>Beskrivning</th>
+          <th>Upphämtning</th>
+          <th>Tillbakalämning</th>
+          <th>Tillbehör</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @radio_order.radio_loans.each do |radio_loan| %>
+        <tr>
+          <td>
+            <%= radio_loan.description %>
+          </td>
+          <td>
+            <%=l radio_loan.pickup, format: :short %>
+          </td>
+          <td>
+            <%=l radio_loan.return, format: :short %>
+          </td>
+          <td>
+            <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
+            <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
+            <% if radio_loan.headset_accessory? %>Hörlur<% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p><a class="button" href="<%= edit_admin_radio_order_path(@radio_order) %>">Redigera</a></p>
+</section>

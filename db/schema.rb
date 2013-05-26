@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512183914) do
+ActiveRecord::Schema.define(:version => 20130525144047) do
 
   create_table "dishes", :force => true do |t|
     t.datetime "created_at",                         :null => false
@@ -63,5 +63,40 @@ ActiveRecord::Schema.define(:version => 20130512183914) do
   end
 
   add_index "people", ["cco_id"], :name => "index_people_on_cco_id"
+
+  create_table "radio_loans", :force => true do |t|
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.integer  "radio_order_id",           :null => false
+    t.string   "description",              :null => false
+    t.boolean  "remote_speaker_accessory", :null => false
+    t.boolean  "earpiece_accessory",       :null => false
+    t.boolean  "headset_accessory",        :null => false
+    t.datetime "pickup",                   :null => false
+    t.datetime "return",                   :null => false
+    t.datetime "picked_up_at"
+    t.datetime "returned_at"
+  end
+
+  add_index "radio_loans", ["radio_order_id"], :name => "index_radio_loans_on_radio_order_id"
+
+  create_table "radio_orders", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "event_id",    :null => false
+    t.string   "description", :null => false
+  end
+
+  add_index "radio_orders", ["event_id"], :name => "index_radio_orders_on_event_id"
+
+  create_table "radios", :force => true do |t|
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "serial_number"
+    t.integer  "radio_loan_id"
+  end
+
+  add_index "radios", ["radio_loan_id"], :name => "index_radios_on_radio_loan_id", :unique => true
+  add_index "radios", ["serial_number"], :name => "index_radios_on_serial_number"
 
 end
