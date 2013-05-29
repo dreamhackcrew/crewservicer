@@ -57,9 +57,17 @@
     <%= form_tag bind_radio_admin_radio_order_radio_loan_path(@radio_order, @radio_loan) do %>
       <label>
           <span class="label">Serienummer</span>
-          <%= text_field_tag :radio_serial_number, params[:radio_serial_number] %>
+          <%= text_field_tag :radio_serial_number, params[:radio_serial_number], id: 'radio-serial-number' %>
       </label>
       <p><input type="submit" value="Koppla"></p>
     <% end %>
   </section>
+
+  <% content_for :javascript_init do %>
+    <script type="text/javascript">
+      window.addEvent("domready", function() {
+        $("radio-serial-number").focus();
+      });
+    </script>
+  <% end %>
 <% end %>
