@@ -31,7 +31,7 @@ Crewservicer::Application.routes.draw do
 
         resources :radio_loans, only: [ :show ], path: 'radios' do
           member do
-            post 'bind_radio', path: 'koppla_radio'
+            post 'bind_radio', path: 'koppla-radio'
           end
         end
       end
