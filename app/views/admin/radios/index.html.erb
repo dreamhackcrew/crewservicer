@@ -1,0 +1,86 @@
+<h1>Radios</h1>
+<section class="content">
+  <h2>Aktiva radios</h2>
+  <table id="radio-loans">
+    <thead>
+      <tr>
+        <th>Serienummer</th>
+        <th>Utlångsingsnamn</th>
+        <th>Period</th>
+        <th>Tillbehör</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @active_radio_loans.each do |radio_loan| %>
+        <tr>
+          <td>
+            <%= radio_loan.radio.serial_number %>
+          </td>
+          <td>
+            <%= radio_loan.radio_order.description %> – <%= radio_loan.description %>
+          </td>
+          <td>
+            <%=l radio_loan.pickup, format: :short %> -
+            <%=l radio_loan.return, format: :short %>
+          </td>
+          <td>
+            <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
+            <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
+            <% if radio_loan.headset_accessory? %>Hörlur<% end %>
+          </td>
+          <td>
+            <% case radio_loan.status when :returned %>
+              Tillbakalämnad <%=l radio_loan.returned_at, format: :short %>
+            <% when :picked_up %>
+              Utlämnad <%=l radio_loan.picked_up_at, format: :short %>
+            <% when :prepared %>
+              Förberedd
+            <% when :new %>
+              Ny
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Tillbakalämnade radios</h2>
+  <table id="radio-loans">
+    <thead>
+      <tr>
+        <th>Serienummer</th>
+        <th>Utlångsingsnamn</th>
+        <th>Period</th>
+        <th>Tillbehör</th>
+        <th>Tillbakalämnad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @returned_radio_loans.each do |radio_loan| %>
+        <tr>
+          <td>
+            <%= radio_loan.radio.serial_number %>
+          </td>
+          <td>
+            <%= radio_loan.radio_order.description %> – <%= radio_loan.description %>
+          </td>
+          <td>
+            <%=l radio_loan.pickup, format: :short %> -
+            <%=l radio_loan.return, format: :short %>
+          </td>
+          <td>
+            <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
+            <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
+            <% if radio_loan.headset_accessory? %>Hörlur<% end %>
+          </td>
+          <td>
+            <%=l radio_loan.returned_at, format: :short %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

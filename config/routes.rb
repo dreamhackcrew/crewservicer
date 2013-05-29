@@ -36,6 +36,8 @@ Crewservicer::Application.routes.draw do
           end
         end
       end
+
+      resources :radios, only: [ :index ]
     end
   end
 
