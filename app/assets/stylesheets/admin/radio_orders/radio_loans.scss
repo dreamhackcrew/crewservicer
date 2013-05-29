@@ -1,0 +1,9 @@
+#radio-loans-actions {
+  &.submit-active .select-hint {
+    display: none;
+  }
+
+  &.select-hint-active .submit {
+    display: none;
+  }
+}

@@ -1,6 +1,6 @@
 class Admin::RadioOrdersController < ApplicationController
   before_filter :require_administrator_privileges
-  before_filter :set_radio_order, only: [ :show, :edit, :update ]
+  before_filter :set_radio_order, except: [ :index, :new, :create ]
 
   def index
     @radio_orders = @current_event.radio_orders.order('description ASC').all
@@ -33,6 +33,28 @@ class Admin::RadioOrdersController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def next_loan_status
+    if params[:pickup_radio_loan_ids]
+      RadioLoan.find(params[:pickup_radio_loan_ids]).each do |radio_loan|
+        next if radio_loan.radio_order_id != @radio_order.id
+
+        radio_loan.picked_up_at = Time.now
+        radio_loan.save
+      end
+    end
+
+    if params[:return_radio_loan_ids]
+      RadioLoan.find(params[:return_radio_loan_ids]).each do |radio_loan|
+        next if radio_loan.radio_order_id != @radio_order.id
+
+        radio_loan.returned_at = Time.now
+        radio_loan.save
+      end
+    end
+
+    redirect_to admin_radio_order_path(@radio_order)
   end
 
   private
