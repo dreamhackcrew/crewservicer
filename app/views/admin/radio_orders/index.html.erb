@@ -23,3 +23,7 @@
   <% end %>
   <p><a href="<%= new_admin_radio_order_path %>" class="button">Ny radiobeställning</a></p>
 </section>
+
+<% content_for :subnav do %>
+  <%= render 'admin/radio_subnav' %>
+<% end %>
