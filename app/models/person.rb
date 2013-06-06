@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  has_many :t_shirt_orders
+
   attr_accessible :cco_id, :username, :administrator
 
   validates_numericality_of :cco_id

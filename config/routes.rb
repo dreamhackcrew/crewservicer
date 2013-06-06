@@ -38,6 +38,8 @@ Crewservicer::Application.routes.draw do
       end
 
       resources :radios, only: [ :index ]
+
+      resources :t_shirt_orders, only: [ :index ], path: 't-shirts'
     end
   end
 

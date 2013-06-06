@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :food_services
   has_many :radio_orders
+  has_many :t_shirt_orders
 
   attr_accessible :cco_id, :name, :start, :end, :construction_start, :teardown_end, :active
 

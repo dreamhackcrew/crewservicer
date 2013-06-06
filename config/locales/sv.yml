@@ -15,3 +15,20 @@ sv:
             radio_id:
               already_in_use: används redan
               required_when_picked_up: måste anges vid utlämning
+  enumerize:
+    t_shirt_order:
+      type:
+        crew: "Crew"
+        gift: "Present"
+      size:
+        unisex_xs: "Unisex XS"
+        unisex_s: "Unisex S"
+        unisex_m: "Unisex M"
+        unisex_l: "Unisex L"
+        unisex_xl: "Unisex XL"
+        unisex_xxl: "Unisex XXL"
+        unisex_3xl: "Unisex 3XL"
+        unisex_4xl: "Unisex 4XL"
+        unisex_5xl: "Unisex 5XL"
+        unisex_6xl: "Unisex 6XL"
+

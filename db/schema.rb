@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525144047) do
+ActiveRecord::Schema.define(:version => 20130530211321) do
 
   create_table "dishes", :force => true do |t|
     t.datetime "created_at",                         :null => false
@@ -98,5 +98,18 @@ ActiveRecord::Schema.define(:version => 20130525144047) do
   end
 
   add_index "radios", ["serial_number"], :name => "index_radios_on_serial_number"
+
+  create_table "t_shirt_orders", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "event_id",     :null => false
+    t.integer  "person_id",    :null => false
+    t.string   "model",        :null => false
+    t.string   "size",         :null => false
+    t.datetime "picked_up_at"
+  end
+
+  add_index "t_shirt_orders", ["event_id"], :name => "index_t_shirt_orders_on_event_id"
+  add_index "t_shirt_orders", ["person_id"], :name => "index_t_shirt_orders_on_person_id"
 
 end

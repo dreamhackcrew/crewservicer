@@ -1,0 +1,29 @@
+<h1>T-shirtbeställningar</h1>
+
+<section class="content">
+  <h2>Crew-t-shirts</h2>
+  <% if @crew_t_shirt_orders.size > 0 %>
+    <ul>
+      <% @crew_t_shirt_orders.each do |t_shirt_order| %>
+        <li><%= t_shirt_order.person.username %> – <%= t_shirt_order.size_text %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><em>Det finns inga beställningar på crew-t-shirts ännu.</em></p>
+  <% end %>
+
+  <h2>Present-t-shirts</h2>
+  <% if @gift_t_shirt_orders.size > 0 %>
+    <ul>
+      <% @gift_t_shirt_orders.each do |t_shirt_order| %>
+        <li><%= t_shirt_order.person.username %> – <%= t_shirt_order.size %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><em>Det finns inga beställningar på present-t-shirts ännu.</em></p>
+  <% end %>
+</section>
+
+<% content_for :subnav do %>
+  <%= render 'admin/system_subnav' %>
+<% end %>
