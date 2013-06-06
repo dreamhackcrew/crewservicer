@@ -16,7 +16,7 @@
   <% if @gift_t_shirt_orders.size > 0 %>
     <ul>
       <% @gift_t_shirt_orders.each do |t_shirt_order| %>
-        <li><%= t_shirt_order.person.username %> – <%= t_shirt_order.size %></li>
+        <li><%= t_shirt_order.person.username %> – <%= t_shirt_order.size_text %></li>
       <% end %>
     </ul>
   <% else %>
