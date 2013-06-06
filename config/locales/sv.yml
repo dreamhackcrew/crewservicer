@@ -17,7 +17,7 @@ sv:
               required_when_picked_up: måste anges vid utlämning
   enumerize:
     t_shirt_order:
-      type:
+      model:
         crew: "Crew"
         gift: "Present"
       size:
