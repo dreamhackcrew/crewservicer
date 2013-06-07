@@ -7,6 +7,42 @@
 </section>
 
 <section class="content">
+  <h2>Eventinfo</h2>
+
+  <% if @event_info.nil? %>
+    <p><%= @cco_user.username %> har inte angivit eventinfo.</p>
+  <% else %>
+    <dl>
+      <dt>Incheckad</dt>
+      <dd><% if @event_info.checkedin %>Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %><% else %>Nej<% end %></dd>
+    </dl>
+  <% end %>
+</section>
+
+<section class="content">
+  <h2>Beställda t-shirts</h2>
+  <% if @person.t_shirt_orders.size > 0 %>
+    <ul>
+      <% @person.t_shirt_orders.each do |order| %>
+        <li>
+          <%= order.model_text %> – <%= order.size_text %>
+          <% if order.picked_up_at %>
+            – Utlämnad <%=l order.picked_up_at, format: :short %>
+          <% else %>
+            <%= form_tag pick_up_t_shirt_admin_person_path do %>
+              <%= hidden_field_tag :t_shirt_order_id, order.id %>
+              <input type="submit" value="Lämna ut">
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><em>Inga t-shirts valda i tid.</em></p>
+  <% end %>
+</section>
+
+<section class="content">
   <h2>Crewservicer</h2>
 
   <%= form_for [ :admin, @person ], method: :put, url: admin_person_path(@cco_user.uid) do |f| %>
@@ -17,18 +53,5 @@
     <% end %>
 
     <p><input type="submit" value="<% if @person.persisted? %>Spara<% else %>Lägg till och spara<% end %>"></p>
-  <% end %>
-</section>
-
-<section class="content">
-  <h2>Eventinfo</h2>
-
-  <% if @event_info.nil? %>
-    <p><%= @cco_user.username %> har inte angivit eventinfo.</p>
-  <% else %>
-    <dl>
-      <dt>Incheckad</dt>
-      <dd><% if @event_info.checkedin %>Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %><% else %>Nej<% end %></dd>
-    </dl>
   <% end %>
 </section>

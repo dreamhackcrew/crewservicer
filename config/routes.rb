@@ -11,6 +11,10 @@ Crewservicer::Application.routes.draw do
   scope path_names: { :new => "ny", :edit => "redigera" } do
     namespace :admin do
       resources :people, only: [ :index, :show, :update ], path: 'folk' do
+        member do
+          post 'pick_up_t_shirt', path: 'hamta-t-shirt'
+        end
+
         collection do
           get 'search', path: 'sok'
         end

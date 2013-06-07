@@ -14,6 +14,14 @@ class Admin::PeopleController < ApplicationController
     @person = Person.find_or_update_by_cco_user(@cco_user)
   end
 
+  def pick_up_t_shirt
+    @t_shirt_order = TShirtOrder.find(params[:t_shirt_order_id])
+    @t_shirt_order.picked_up_at = Time.now
+    @t_shirt_order.save
+
+    redirect_to action: :show
+  end
+
   def update
     @person = Person.find_or_update_by_cco_user(@cco_user)
     @person.update_attributes(params[:person])
