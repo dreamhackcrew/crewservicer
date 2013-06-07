@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Person</th>
+      <th>Storlek</th>
+      <th>Utlämnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% t_shirt_orders.each do |t_shirt_order| %>
+      <tr>
+        <td><%= t_shirt_order.person.username %></td>
+        <td><%= t_shirt_order.size_text %></td>
+        <td>
+          <% if t_shirt_order.picked_up_at %>
+            <%=l t_shirt_order.picked_up_at, format: :short %>
+          <% else %>
+            —
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
