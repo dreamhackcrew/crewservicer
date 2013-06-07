@@ -13,6 +13,7 @@ Crewservicer::Application.routes.draw do
       resources :people, only: [ :index, :show, :update ], path: 'folk' do
         member do
           post 'pick_up_t_shirt', path: 'hamta-t-shirt'
+          post 'check_in', path: 'checka-in'
         end
 
         collection do

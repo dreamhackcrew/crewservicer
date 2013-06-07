@@ -22,6 +22,12 @@ class Admin::PeopleController < ApplicationController
     redirect_to action: :show
   end
 
+  def check_in
+    @event_info = CrewCorner::EventInfo.check_in(params[:id], @current_event.cco_id, access_token: @cco_access_token)
+
+    redirect_to action: :show
+  end
+
   def update
     @person = Person.find_or_update_by_cco_user(@cco_user)
     @person.update_attributes(params[:person])
