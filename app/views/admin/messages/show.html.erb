@@ -1,0 +1,42 @@
+<h1>Redigera meddelande</h1>
+
+<section class="content">
+  <h2>Publicering</h2>
+  <dl>
+    <dt>Publicerad</dt>
+    <dd>
+      <% if @message.published_at? %>
+        <%=l @message.published_at, format: :short %>
+      <% elsif @message.deleted_at.nil? %>
+        <%= form_tag publish_admin_message_path(@message) do %>
+          <p><input type="submit" value="Publicera"></p>
+        <% end %>
+      <% else %>
+        –
+      <% end %>
+    </dd>
+    <dt>Borttagen</dt>
+    <dd>
+      <% if @message.deleted_at? %>
+        <%=l @message.deleted_at, format: :short %>
+        <%= form_tag restore_admin_message_path(@message) do %>
+          <p><input type="submit" value="Återställ"></p>
+        <% end %>
+      <% else %>
+        <%= form_for [ :admin, @message ], method: :delete do %>
+          <p><input type="submit" value="Ta bort"></p>
+        <% end %>
+      <% end %>
+    </dd>
+  </dl>
+
+</section>
+
+<section class="content">
+  <%= render 'form' %>
+  <p></p>
+</section>
+
+<% content_for :subnav do %>
+  <%= render 'admin/information_subnav' %>
+<% end %>

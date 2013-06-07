@@ -1,0 +1,102 @@
+<h1>Meddelanden</h1>
+
+<section class="content">
+  <p><a class="button" href="<%= new_admin_message_path %>">Nytt meddelande</a></p>
+</section>
+
+<section class="content">
+  <h2>Aktiva meddelanden</h2>
+
+  <% if @active_messages.size > 0 %>
+    <%= form_tag sort_admin_messages_path do %>
+      <table>
+        <thead>
+          <tr>
+            <th>Sortering</th>
+            <th>Rubrik</th>
+            <th>Visas på</th>
+            <th>Publicerad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @active_messages.each_with_index do |message, i| %>
+            <tr>
+              <td class="full-field">
+                <%= hidden_field_tag "messages[#{i}][id]", message.id %>
+                <%= text_field_tag "messages[#{i}][sort_priority]", message.sort_priority %>
+              </td>
+              <td>
+                <a href="<%= admin_message_path message %>"><%= message.headline %></a>
+              </td>
+              <td>
+                <% if message.on_site? %>
+                  dhcrew.info
+                <% end %>
+                <% if message.on_info_screen? %>
+                  infoskärmen
+                <% end %>
+              </td>
+              <td>
+                <% if message.published_at %>
+                  <%=l message.published_at, format: :short %>
+                <% else %>
+                  –
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><input type="submit" value="Spara sortering"></p>
+    <% end %>
+  <% else %>
+    <p><em>Inga aktiva meddelanden.</em></p>
+  <% end %>
+</section>
+
+<section class="content">
+  <h2>Borttagna meddelanden</h2>
+
+  <% if @deleted_messages.size > 0 %>
+    <table>
+      <thead>
+      <tr>
+        <th>Rubrik</th>
+        <th>Visades på</th>
+        <th>Borttagen</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @deleted_messages.each do |message| %>
+        <tr>
+          <td>
+            <a href="<%= admin_message_path message %>"><%= message.headline %></a>
+          </td>
+          <td>
+            <% if message.on_site? %>
+              dhcrew.info
+            <% end %>
+            <% if message.on_info_screen? %>
+              infoskärmen
+            <% end %>
+          </td>
+          <td>
+            <% if message.published_at %>
+              <%=l message.published_at, format: :short %>
+            <% else %>
+              –
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p><em>Inga borttagna meddelanden.</em></p>
+  <% end %>
+</section>
+
+
+<% content_for :subnav do %>
+  <%= render 'admin/information_subnav' %>
+<% end %>

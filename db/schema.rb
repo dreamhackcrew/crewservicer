@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530211321) do
+ActiveRecord::Schema.define(:version => 20130607143314) do
 
   create_table "dishes", :force => true do |t|
     t.datetime "created_at",                         :null => false
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(:version => 20130530211321) do
   add_index "food_services", ["closes_at"], :name => "index_food_services_on_closes_at"
   add_index "food_services", ["event_id"], :name => "index_food_services_on_event_id"
   add_index "food_services", ["opens_at", "closes_at"], :name => "index_food_services_on_opens_at_and_closes_at"
+
+  create_table "messages", :force => true do |t|
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "event_id",                          :null => false
+    t.datetime "published_at"
+    t.datetime "deleted_at"
+    t.string   "headline",                          :null => false
+    t.text     "text",                              :null => false
+    t.boolean  "on_site",        :default => false, :null => false
+    t.boolean  "on_info_screen", :default => false, :null => false
+    t.integer  "sort_priority",  :default => 0,     :null => false
+  end
+
+  add_index "messages", ["event_id"], :name => "index_messages_on_event_id"
 
   create_table "people", :force => true do |t|
     t.datetime "created_at",              :null => false

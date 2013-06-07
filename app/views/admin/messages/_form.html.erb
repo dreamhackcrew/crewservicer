@@ -1,0 +1,36 @@
+<%= form_for [ :admin, @message ] do |f| %>
+  <% if @message.errors.size > 0 %>
+    <div class="errors">
+      <span class="error-icon icon large">&#9888;</span>
+      <p>Några fält måste korrigeras</p>
+      <ul>
+        <% @message.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <label>
+      <span class="label">Rubrik</span>
+      <%= f.text_field :headline %>
+      <label>
+  </p>
+  <p>
+    Visa på
+    <label>
+      <%= f.check_box :on_site %>
+      dhcrew.info
+    </label>
+    <label>
+      <%= f.check_box :on_info_screen %>
+      infoskärmen
+    </label>
+  </p>
+  <p>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <input type="submit" value="Spara" />
+  </p>
+<% end %>

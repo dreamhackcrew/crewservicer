@@ -45,6 +45,17 @@ Crewservicer::Application.routes.draw do
       resources :radios, only: [ :index ]
 
       resources :t_shirt_orders, only: [ :index ], path: 't-shirts'
+
+      resources :messages, except: [ :edit ], path: "meddelanden" do
+        collection do
+          post 'sort', path: 'sortera'
+        end
+
+        member do
+          post 'publish', path: 'publicera'
+          post 'restore', path: 'aterstall'
+        end
+      end
     end
   end
 
