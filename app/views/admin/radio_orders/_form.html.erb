@@ -34,10 +34,10 @@
             <%= rf.text_field :description %>
           </td>
           <td class="full-field">
-            <%= rf.text_field :pickup %>
+            <%= rf.text_field :pickup, value: rf.object.pickup %>
           </td>
           <td class="full-field">
-            <%= rf.text_field :return %>
+            <%= rf.text_field :return, value: rf.object.return %>
           </td>
           <td>
             <label><%= rf.check_box :remote_speaker_accessory %> Monofon</label>

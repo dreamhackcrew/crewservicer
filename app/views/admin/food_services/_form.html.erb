@@ -13,14 +13,14 @@
   <p>
     <label>
       <span class="label">Öppnar</span>
-      <%= f.text_field :opens_at %>
+      <%= f.text_field :opens_at, value: f.object.opens_at %>
       <span class="hint">ÅÅÅÅ-MM-DD TT:MM (ex.: 2013-06-15 18:00)</span>
     </label>
   </p>
   <p>
     <label>
       <span class="label">Stänger</span>
-      <%= f.text_field :closes_at %>
+      <%= f.text_field :closes_at, value: f.object.closes_at %>
       <span class="hint">ÅÅÅÅ-MM-DD TT:MM (ex.: 2013-06-15 18:00)</span>
     </label>
   </p>
