@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= stylesheet_link_tag "admin" if administrator? %>
     <%= csrf_meta_tags %>
+    <%= auto_discovery_link_tag(:atom, messages_path(:atom)) %>
   </head>
   <body class="<% if content_for? :subnav %>subnav<% end %>">
     <% if administrator? %>

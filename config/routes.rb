@@ -7,6 +7,7 @@ Crewservicer::Application.routes.draw do
   get 'login/callback' => 'sessions#callback', as: :oauth_callback
 
   get 'mat' => 'dashboard#food_services', as: :food_services
+  get 'meddelanden' => 'dashboard#messages', as: :messages, constraints: { format: 'atom' }
 
   scope path_names: { :new => "ny", :edit => "redigera" } do
     namespace :admin do
