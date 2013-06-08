@@ -4,12 +4,14 @@
 body {
   background: $black;
   padding: 40px 0;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
 }
 
 #event {
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 40px;
+  margin: 0 15px 40px;
 
   .info-for {
     @include font-dreamhack-thin;
@@ -29,26 +31,59 @@ body {
 section.content {
   background: $darkgrey;
   margin: 20px 0;
-  padding: 20px 30px;
-  border: 1px solid rgba($white, 0.1);
+  border: 0 solid rgba($white, 0.1);
 }
 
-.content-columns {
-  overflow: hidden;
+@media (max-width: 700px) {
+  #container > h1, #container > h2 {
+    margin-left: 15px;
+  }
 
-  .column {
-    float: left;
-    box-sizing: border-box;
+  section.content {
+    padding: 20px 15px;
+  }
 
-    &.half-width {
-      width: 50%;
+  .content-columns {
+    .column + .column {
+      padding-top: 20px;
+    }
+  }
+}
 
-      &:nth-child(odd) {
-        padding-right: 10px;
-      }
-      &:nth-child(even) {
-        padding-left: 10px;
+@media (min-width: 700px) {
+  section.content {
+    padding: 20px 30px;
+  }
+
+  .content-columns {
+    overflow: hidden;
+
+    .column {
+      float: left;
+      box-sizing: border-box;
+
+      &.half-width {
+        width: 50%;
+
+        &:nth-child(odd) {
+          padding-right: 10px;
+        }
+        &:nth-child(even) {
+          padding-left: 10px;
+        }
       }
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  section.content {
+    border-width: 1px 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  section.content {
+    border-width: 1px;
   }
 }

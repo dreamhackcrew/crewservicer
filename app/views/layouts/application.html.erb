@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
     <title>Crewservicer</title>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= stylesheet_link_tag "admin" if administrator? %>
@@ -8,6 +10,18 @@
     <%= auto_discovery_link_tag(:atom, messages_path(:atom)) %>
   </head>
   <body class="<% if content_for? :subnav %>subnav<% end %>">
+    <div id="container">
+      <% if content_for? :subnav %>
+        <nav id="subnav">
+          <div class="fixed-holder">
+            <%= yield :subnav %>
+          </div>
+        </nav>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
     <% if administrator? %>
       <nav id="admin-nav">
         <ul>
@@ -29,18 +43,6 @@
         </ul>
       </nav>
     <% end %>
-
-    <div id="container">
-      <% if content_for? :subnav %>
-        <nav id="subnav">
-          <div class="fixed-holder">
-            <%= yield :subnav %>
-          </div>
-        </nav>
-      <% end %>
-
-      <%= yield %>
-    </div>
 
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "admin" if administrator? %>

@@ -5,6 +5,16 @@
   </h1>
 </header>
 
+<% @messages.each do |message| %>
+<section class="content">
+  <div class="message">
+    <h2><%= message.headline %></h2>
+    <%= simple_format message.text %>
+  </div>
+</section>
+<% end %>
+
+
 <section class="content">
   <h2>Kommande måltider</h2>
   <% if @upcoming_food_services.size > 0 %>
@@ -18,12 +28,5 @@
   <% else %>
     <p>Det är slut på mat för den här gången.</p>
   <% end %>
-  <p><a href="<%= food_services_path %>">Hela matsedeln</a></p>
+  <p><a class="button" href="<%= food_services_path %>">Hela matsedeln</a></p>
 </section>
-
-<% @messages.each do |message| %>
-<section class="content">
-  <h2><%= message.headline %></h2>
-  <%= simple_format message.text %>
-</section>
-<% end %>

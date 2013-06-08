@@ -12,8 +12,12 @@ p, h1, h2, h3, h4, ul, dl {
 }
 
 h1, h2, h3, h4 {
-  & + p, & + ul, & + dl, & + .content-columns {
+  & + p, & + ul, & + dl {
     margin-top: 10px;
+  }
+
+  & + .content-columns {
+    margin-top: 20px;
   }
 }
 
@@ -23,6 +27,12 @@ p {
   }
 
   & + h1, & + h2, & + h3, & + h4 {
+    margin-top: 20px;
+  }
+}
+
+.content-columns {
+  & + p {
     margin-top: 20px;
   }
 }
