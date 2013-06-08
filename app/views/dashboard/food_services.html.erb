@@ -1,4 +1,10 @@
-<h1>Matsedel</h1>
+<header>
+  <h1>
+    Matsedel
+    <em><%= @current_event.name %></em>
+  </h1>
+</header>
+
 
 <% if @upcoming_food_services.size > 0 %>
   <% @upcoming_food_services.each do |food_service| %>
@@ -7,7 +13,7 @@
     </section>
   <% end %>
 <% else %>
-  <p>Det är slut på mat för den här gången.</p>
+  <p>Inga fler måltider detta event.</p>
 <% end %>
 
 <% if @past_food_services.size > 0 %>
@@ -17,6 +23,4 @@
       <%= render 'food_service', food_service: food_service %>
     </section>
   <% end %>
-<% else %>
-  <p>Det är slut på mat för den här gången.</p>
 <% end %>

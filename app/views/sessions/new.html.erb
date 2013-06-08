@@ -1,3 +1,11 @@
-<h1>Logga in</h1>
-<p>För att använda Crewservicer behöver du logga in via crew.dreamhack.se</p>
-<p><a href="<%= url_for controller: :sessions, action: :create %>">Logga in</a></p>
+<header>
+  <h1>
+    Crewinfo
+    <em><%= @current_event.name %></em>
+  </h1>
+</header>
+
+<section class="content">
+  <p>För att se matsedeln och crewmeddelanden behöver du logga in via crew.dreamhack.se.</p>
+  <p><a class="button" href="<%= oauth_redirect_path %>">Bara gört</a></p>
+</section>

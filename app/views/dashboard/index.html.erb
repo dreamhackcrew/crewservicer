@@ -1,7 +1,7 @@
-<header id="event">
+<header>
   <h1>
-    <span class="info-for">Crewinfo</span>
-    <span class="event"><%= @current_event.name %></span>
+    Crewinfo
+    <em><%= @current_event.name %></em>
   </h1>
 </header>
 
@@ -26,7 +26,7 @@
       <% end %>
     </div>
   <% else %>
-    <p>Det är slut på mat för den här gången.</p>
+    <p>Inga fler måltider detta event.</p>
   <% end %>
   <p><a class="button" href="<%= food_services_path %>">Hela matsedeln</a></p>
 </section>

@@ -8,17 +8,16 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-#event {
+header h1 {
   text-transform: uppercase;
   text-align: center;
   margin: 0 15px 40px;
 
-  .info-for {
-    @include font-dreamhack-thin;
-  }
+  @include font-dreamhack-thin;
 
-  .event {
+  em {
     @include font-dreamhack-normal;
+    font-style: normal;
   }
 }
 
