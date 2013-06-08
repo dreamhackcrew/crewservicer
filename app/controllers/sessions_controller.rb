@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:person_id)
 
-    redirect_to :root
+    redirect_to dashboard_path
   end
 
   def callback
