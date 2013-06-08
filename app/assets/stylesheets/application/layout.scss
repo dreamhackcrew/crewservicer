@@ -34,6 +34,10 @@ section.content {
   border: 0 solid rgba($white, 0.1);
 }
 
+footer {
+  text-align: center;
+}
+
 @media (max-width: 700px) {
   #container > h1, #container > h2 {
     margin-left: 15px;

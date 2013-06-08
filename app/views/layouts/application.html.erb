@@ -22,6 +22,15 @@
       <%= yield %>
     </div>
 
+    <% if @current_person %>
+      <footer>
+        <p>
+          <a href="<%= messages_path :atom %>">Feed</a> –
+          <a href="<%= logout_path %>">Logga ut</a>
+        </p>
+      </footer>
+    <% end %>
+
     <% if administrator? %>
       <nav id="admin-nav">
         <ul>
