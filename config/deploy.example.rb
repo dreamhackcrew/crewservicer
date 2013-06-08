@@ -18,12 +18,12 @@ set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 set :secrets_dir, 'secrets'
 set :secret_files, {
-  'database.yml'             => 'config',
-  'unicorn.rb'               => 'config',
-  'newrelic.yml'             => 'config',
-  'crew_corner_oauth.rb'     => 'config/initializers',
-  'secret_token.rb'          => 'config/initializers',
-  'dreamhack_normal.*'       => 'app/assets/fonts',
-  'dreamhack_thin.*'         => 'app/assets/fonts',
-  'dreamhack-touch-icon.png' => 'app/assets/images'
+  'database.yml'             => 'config/',
+  'unicorn.rb'               => 'config/',
+  'newrelic.yml'             => 'config/',
+  'crew_corner_oauth.rb'     => 'config/initializers/',
+  'secret_token.rb'          => 'config/initializers/',
+  'dreamhack_normal.*'       => 'app/assets/fonts/',
+  'dreamhack_thin.*'         => 'app/assets/fonts/',
+  'dreamhack-touch-icon.png' => 'app/assets/images/'
 }
