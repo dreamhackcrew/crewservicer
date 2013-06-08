@@ -14,7 +14,13 @@
     </section>
   <% end %>
 <% else %>
-  <p>Inga fler måltider detta event.</p>
+  <section class="content">
+    <% if @food_services_pending %>
+      <p>Matsedeln kommer upp inom kort.</p>
+    <% else %>
+      <p>Inga fler måltider detta event.</p>
+    <% end %>
+  </section>
 <% end %>
 
 <% if @past_food_services.size > 0 %>
