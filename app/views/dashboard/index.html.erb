@@ -20,3 +20,10 @@
   <% end %>
   <p><a href="<%= food_services_path %>">Hela matsedeln</a></p>
 </section>
+
+<% @messages.each do |message| %>
+<section class="content">
+  <h2><%= message.headline %></h2>
+  <%= simple_format message.text %>
+</section>
+<% end %>

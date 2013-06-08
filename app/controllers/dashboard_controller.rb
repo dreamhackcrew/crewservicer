@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
 
   def index
     @upcoming_food_services = @current_event.food_services.upcoming.order('opens_at ASC').includes(:dishes).limit(2)
+    @messages = Message.published.order('sort_priority ASC, published_at DESC')
   end
 
   def food_services

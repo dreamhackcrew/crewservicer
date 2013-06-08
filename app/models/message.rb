@@ -9,5 +9,5 @@ class Message < ActiveRecord::Base
 
   scope :active, where('deleted_at IS NULL')
   scope :deleted, where('deleted_at IS NOT NULL')
-  scope :published, where('published_at < ? AND deleted_at IS NOT NULL')
+  scope :published, where('published_at < ? AND deleted_at IS NULL', Time.now)
 end
