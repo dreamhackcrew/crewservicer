@@ -16,6 +16,7 @@
 /config/initializers/crew_corner_oauth.rb
 /config/initializers/secret_token.rb
 
-# Proprietary fonts
+# Proprietary assets
 /app/assets/fonts/dreamhack_thin.*
 /app/assets/fonts/dreamhack_normal.*
+/app/assets/images/dreamhack-touch-icon.png

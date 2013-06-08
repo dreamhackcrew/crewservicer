@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag "admin" if administrator? %>
     <%= csrf_meta_tags %>
     <%= auto_discovery_link_tag(:atom, messages_path(:atom)) %>
+    <link rel="apple-touch-icon" href="<%= image_path 'dreamhack-touch-icon.png' %>">
   </head>
   <body class="<% if content_for? :subnav %>subnav<% end %>">
     <div id="container">
