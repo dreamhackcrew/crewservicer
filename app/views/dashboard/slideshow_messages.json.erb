@@ -1,0 +1,8 @@
+[
+  <% @messages.each_with_index do |message, i| %>
+    {
+      "headline": <%=raw message.headline.to_json %>,
+      "text": <%=raw simple_format(message.text).to_json %>
+    }<% unless i + 1 == @messages.length %>,<% end %>
+  <% end %>
+]

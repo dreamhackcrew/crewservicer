@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <%= stylesheet_link_tag 'slideshow', :media => 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= javascript_include_tag 'slideshow' %>
+    <script type="text/javascript">
+      window.addEvent("domready", function() {
+        new Slideshow(10000, "<%= slideshow_messages_url format: :json %>");
+      });
+    </script>
+  </body>
+</html>

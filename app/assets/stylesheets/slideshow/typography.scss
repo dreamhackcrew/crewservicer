@@ -1,0 +1,30 @@
+@import "../variables";
+@import "../mixins";
+
+body {
+  font-size: 60px;
+  color: $white;
+  text-transform: uppercase;
+}
+
+p, h1, h2, h3, h4, ul, dl {
+  margin: 0;
+}
+
+h1 {
+  @include font-dreamhack-normal;
+}
+
+p {
+  @include font-dreamhack-thin;
+}
+
+h1, p {
+  & + p {
+    margin-top: 50px;
+  }
+}
+
+a:link, a:visited {
+  color: $white;
+}

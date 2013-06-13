@@ -20,4 +20,17 @@ class DashboardController < ApplicationController
       format.atom { render layout: false }
     end
   end
+
+  def info_slideshow
+    render layout: false
+  end
+
+  def slideshow_messages
+    @next_food_service = @current_event.food_services.upcoming.order('opens_at ASC').includes(:dishes).first
+    @messages = Message.published.on_info_screen.order('sort_priority ASC, published_at DESC')
+
+    respond_to do |format|
+      format.json { render layout: false }
+    end
+  end
 end

@@ -9,6 +9,9 @@ Crewservicer::Application.routes.draw do
   get 'mat' => 'dashboard#food_services', as: :food_services
   get 'meddelanden' => 'dashboard#messages', as: :messages, constraints: { format: 'atom' }
 
+  get 'slideshow' => 'dashboard#info_slideshow', as: :slideshow
+  get 'slideshow/messages' => 'dashboard#slideshow_messages', as: :slideshow_messages, constraints: { format: 'json' }
+
   scope path_names: { :new => "ny", :edit => "redigera" } do
     namespace :admin do
       resources :people, only: [ :index, :show, :update ], path: 'folk' do

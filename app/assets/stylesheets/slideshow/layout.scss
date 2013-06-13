@@ -1,0 +1,27 @@
+@import "../variables";
+@import "../mixins";
+
+body {
+  background: $black;
+  -webkit-text-size-adjust: 100%;
+  color: $white;
+}
+
+.slide {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 100px;
+  bottom: 100px;
+  opacity: 0;
+
+  -ms-transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+
+  &.active {
+    opacity: 1;
+  }
+}
