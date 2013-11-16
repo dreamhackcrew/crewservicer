@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:dreamhackcrew/ruby-crew-corner.git
+  remote: git://github.com/dreamhackcrew/ruby-crew-corner.git
   revision: 947c96752db2e3fd3194de32272ad7b2821a375b
   specs:
     crew-corner (0.1.0)

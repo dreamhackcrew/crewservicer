@@ -22,7 +22,7 @@ gem 'unicorn'
 gem 'capistrano'
 
 # Crew Corner client
-gem 'crew-corner', git: 'git@github.com:dreamhackcrew/ruby-crew-corner.git'
+gem 'crew-corner', git: 'git://github.com/dreamhackcrew/ruby-crew-corner.git'
 
 # OAuth to sign Crew Corner requests
 gem 'oauth'
