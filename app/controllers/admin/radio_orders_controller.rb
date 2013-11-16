@@ -3,7 +3,7 @@ class Admin::RadioOrdersController < ApplicationController
   before_filter :set_radio_order, except: [ :index, :new, :create ]
 
   def index
-    @radio_orders = @current_event.radio_orders.order('description ASC').all
+    @radio_orders = @current_event.radio_orders.order('description ASC')
   end
 
   def show
@@ -14,7 +14,7 @@ class Admin::RadioOrdersController < ApplicationController
   end
 
   def create
-    @radio_order = RadioOrder.new(params[:radio_order])
+    @radio_order = RadioOrder.new(radio_order_params)
     @radio_order.event = @current_event
 
     if @radio_order.save
@@ -28,7 +28,7 @@ class Admin::RadioOrdersController < ApplicationController
   end
 
   def update
-    if @radio_order.update_attributes(params[:radio_order])
+    if @radio_order.update_attributes(radio_order_params)
       redirect_to edit_admin_radio_order_path(@radio_order)
     else
       render action: :edit
@@ -61,5 +61,13 @@ class Admin::RadioOrdersController < ApplicationController
 
   def set_radio_order
     @radio_order = RadioOrder.includes(:radio_loans => [ :radio ]).find(params[:id])
+  end
+
+  def radio_order_params
+    params.require(:radio_order).permit(
+      :description,
+      { radio_loans_attributes: [ :id, :_destroy, :description, :remote_speaker_accessory,
+                                  :earpiece_accessory, :headset_accessory, :pickup, :return ] }
+    )
   end
 end

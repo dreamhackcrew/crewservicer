@@ -4,18 +4,16 @@ class Event < ActiveRecord::Base
   has_many :t_shirt_orders
   has_many :messages
 
-  attr_accessible :cco_id, :name, :start, :end, :construction_start, :teardown_end, :active
-
   validates_uniqueness_of :cco_id
   validates_presence_of :name, :start, :end, :construction_start, :teardown_end
   validates_inclusion_of :active, in: [ true, false ]
 
-  scope :active, where(active: true)
+  scope :active, ->{ where(active: true) }
 
   def self.create_all_from_cco_events(cco_events)
     cco_events_hash = Hash[cco_events.map { |e| [e.id, e] }]
 
-    existing_events = Event.find_all_by_cco_id(cco_events_hash.keys)
+    existing_events = Event.where(cco_id: cco_events_hash.keys)
     events = []
 
     existing_events.each do |event|

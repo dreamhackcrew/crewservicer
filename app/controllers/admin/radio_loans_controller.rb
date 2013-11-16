@@ -10,7 +10,7 @@ class Admin::RadioLoansController < ApplicationController
     serial_number = params[:radio_serial_number].upcase if params[:radio_serial_number]
 
     ActiveRecord::Base.transaction do
-      @radio = Radio.find_or_create_by_serial_number(serial_number)
+      @radio = Radio.find_or_create_by(serial_number: serial_number)
 
       @radio_loan.radio = @radio
 

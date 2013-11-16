@@ -2,9 +2,6 @@ class RadioLoan < ActiveRecord::Base
   belongs_to :radio_order
   belongs_to :radio
 
-  attr_accessible :description, :remote_speaker_accessory, :earpiece_accessory,
-                  :headset_accessory, :pickup, :return
-
   validates_presence_of :description
   validates_inclusion_of :remote_speaker_accessory, in: [ true, false ]
   validates_inclusion_of :earpiece_accessory, in: [ true, false ]

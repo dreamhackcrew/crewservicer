@@ -63,7 +63,7 @@ Crewservicer::Application.routes.draw do
     end
   end
 
-  match '404' => 'errors#not_found'
-  match '422' => 'errors#change_rejected'
-  match '500' => 'errors#server_error'
+  get '404' => 'errors#not_found'
+  get '422' => 'errors#change_rejected'
+  get '500' => 'errors#server_error'
 end

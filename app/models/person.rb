@@ -1,8 +1,6 @@
 class Person < ActiveRecord::Base
   has_many :t_shirt_orders
 
-  attr_accessible :cco_id, :username, :administrator
-
   validates_numericality_of :cco_id
   validates_presence_of :username
   validates_inclusion_of :administrator, in: [ true, false ]
@@ -18,7 +16,7 @@ class Person < ActiveRecord::Base
   end
 
   def to_param
-    cco_id
+    cco_id.to_s
   end
 
   def set_defaults

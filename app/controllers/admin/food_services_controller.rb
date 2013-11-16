@@ -11,7 +11,7 @@ class Admin::FoodServicesController < ApplicationController
   end
 
   def create
-    @food_service = FoodService.new(params[:food_service])
+    @food_service = FoodService.new(food_service_params)
     @food_service.event = @current_event
 
     if @food_service.save
@@ -25,7 +25,7 @@ class Admin::FoodServicesController < ApplicationController
   end
 
   def update
-    @food_service.update_attributes(params[:food_service])
+    @food_service.update_attributes(food_service_params)
 
     if @food_service.save
       redirect_to [ :admin, @food_service ]
@@ -39,4 +39,14 @@ class Admin::FoodServicesController < ApplicationController
   def find_food_service
     @food_service = FoodService.find(params[:id])
   end
+
+  def food_service_params
+    params.require(:food_service).permit(
+      :opens_at,
+      :closes_at,
+      { dishes_attributes: [ :id, :_destroy, :description, :vegetarian, :lactose_free, :gluten_free ] }
+    )
+  end
 end
+
+

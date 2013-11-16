@@ -15,7 +15,7 @@ class Admin::MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
     @message.event = @current_event
 
     if @message.save
@@ -26,7 +26,7 @@ class Admin::MessagesController < ApplicationController
   end
 
   def update
-    @message.update_attributes(params[:message])
+    @message.update_attributes(message_params)
 
     if @message.save
       redirect_to [ :admin, @message ]
@@ -75,5 +75,11 @@ class Admin::MessagesController < ApplicationController
     unless @message
       render_not_found
     end
+  end
+
+  def message_params
+    params.require(:message).permit(
+      :published_at, :deleted_at, :headline, :text, :on_site, :on_info_screen, :sort_priority
+    )
   end
 end

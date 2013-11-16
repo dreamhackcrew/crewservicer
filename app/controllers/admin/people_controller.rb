@@ -6,7 +6,7 @@ class Admin::PeopleController < ApplicationController
   before_filter :set_cco_user, only: [ :show, :update ]
 
   def index
-    @people = Person.order('administrator DESC, username ASC').all
+    @people = Person.order('administrator DESC, username ASC')
   end
 
   def show
@@ -30,7 +30,7 @@ class Admin::PeopleController < ApplicationController
 
   def update
     @person = Person.find_or_update_by_cco_user(@cco_user)
-    @person.update_attributes(params[:person])
+    @person.update_attributes(person_params)
 
     if @person.save
       redirect_to admin_person_path(@person)
@@ -66,5 +66,9 @@ class Admin::PeopleController < ApplicationController
     @cco_user = CrewCorner::User.find(params[:id], access_token: @cco_access_token)
 
     render_not_found if @cco_user.nil?
+  end
+
+  def person_params
+    params.require(:person).permit(:administrator)
   end
 end

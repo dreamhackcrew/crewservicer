@@ -1,21 +1,16 @@
 source 'https://rubygems.org'
 
 # Rails with i18n
-gem 'rails', '~> 3.2'
+gem 'rails', '~> 4.0'
 gem 'rails-i18n'
 
 # PostgreSQL
 gem 'pg'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'handlebars_assets'
-end
-
-gem 'mootools-rails', '< 2.0'
+gem 'sass-rails', '~> 4.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'handlebars_assets'
+gem 'mootools-rails', '~> 2.0'
 
 # New Relic monitoring
 gem 'newrelic_rpm'
