@@ -1,3 +1,8 @@
 language: ruby
 rvm:
   - 2.0.0
+before_script:
+  - cp config/initializers/crew_corner_oauth.example.rb config/initializers/crew_corner_oauth.rb
+  - cp config/initializers/secret_token.example.rb config/initializers/secret_token.rb
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database crewservicer_test;' -U postgres

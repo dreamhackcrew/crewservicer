@@ -1,0 +1,9 @@
+common: &common
+  adapter: postgresql
+  host: localhost
+  username: postgres
+  encoding: unicode
+
+test:
+  <<: *common
+  database: crewservicer_test
