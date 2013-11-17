@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 4.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'handlebars_assets'
 gem 'mootools-rails', '~> 2.0'
+gem 'therubyracer'
 
 # New Relic monitoring
 gem 'newrelic_rpm'
@@ -18,8 +19,10 @@ gem 'newrelic_rpm'
 # Unicorn as app server
 gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano'
+group :development do
+  # Deploy with Capistrano
+  gem 'capistrano', '~> 2', require: false
+end
 
 # Crew Corner client
 gem 'crew-corner', git: 'git://github.com/dreamhackcrew/ruby-crew-corner.git'

@@ -1,5 +1,5 @@
 set :application, 'crewservicer'
-set :repository,  'git://github.com/dreamhackcrew/crewservicer.git'
+set :repository, 'git://github.com/dreamhackcrew/crewservicer.git'
 set :scm, :git
 
 set :deploy_to, '/home/crewservicer/crewservicer/'
@@ -27,3 +27,8 @@ set :secret_files, {
   'dreamhack_thin.*'         => 'app/assets/fonts/',
   'dreamhack-touch-icon.png' => 'app/assets/images/'
 }
+
+after "deploy", "newrelic:notice_deployment"
+after "deploy:update", "newrelic:notice_deployment"
+after "deploy:migrations", "newrelic:notice_deployment"
+after "deploy:update", "deploy:cleanup"

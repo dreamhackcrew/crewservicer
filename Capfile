@@ -6,8 +6,10 @@ load 'deploy/assets'
 require 'bundler/capistrano'
 
 # Custom recipes
-load 'lib/recipes/unicorn'
-load 'lib/recipes/symlink_secrets'
+Dir.glob('lib/recipes/*.rb').each { |r| load r }
 
 # Config
 load 'config/deploy'
+
+# New Relic
+require 'new_relic/recipes'
