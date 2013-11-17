@@ -28,7 +28,6 @@ set :secret_files, {
   'dreamhack-touch-icon.png' => 'app/assets/images/'
 }
 
-after "deploy", "newrelic:notice_deployment"
+after "deploy:update", "deploy:cleanup"
 after "deploy:update", "newrelic:notice_deployment"
 after "deploy:migrations", "newrelic:notice_deployment"
-after "deploy:update", "deploy:cleanup"
