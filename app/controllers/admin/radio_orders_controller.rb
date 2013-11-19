@@ -66,8 +66,12 @@ class Admin::RadioOrdersController < ApplicationController
   def radio_order_params
     params.require(:radio_order).permit(
       :description,
-      { radio_loans_attributes: [ :id, :_destroy, :description, :remote_speaker_accessory,
-                                  :earpiece_accessory, :headset_accessory, :pickup, :return ] }
+      :pickup_time,
+      :return_time,
+      :remote_speakers,
+      :earpieces,
+      :headsets,
+      { radio_loans_attributes: [ :id, :_destroy, :description ] }
     )
   end
 end

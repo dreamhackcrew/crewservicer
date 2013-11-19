@@ -1,6 +1,36 @@
 <h1>Radiobeställning</h1>
 <section class="content">
   <p>Beskrivning: <%= @radio_order.description %></p>
+  <p>Period: <%=l @radio_order.pickup_time, format: :short %> - <%=l @radio_order.return_time, format: :short %></p>
+
+  <h2>Tillbehör</h2>
+  <table id="accessories">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Beställda</th>
+        <th>Kvarvarande</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monofoner</td>
+        <td><%= @radio_order.remote_speakers %></td>
+        <td><%= @radio_order.remote_speakers_currently %></td>
+      </tr>
+      <tr>
+        <td>Snäckor</td>
+        <td><%= @radio_order.earpieces %></td>
+        <td><%= @radio_order.earpieces_currently %></td>
+      </tr>
+      <tr>
+        <td>Hörlurar</td>
+        <td><%= @radio_order.headsets %></td>
+        <td><%= @radio_order.headsets_currently %></td>
+      </tr>
+    </tbody>
+  </table>
+
   <h2>Radios</h2>
   <%= form_tag next_loan_status_admin_radio_order_path(@radio_order) do %>
     <table id="radio-loans">
@@ -8,8 +38,6 @@
         <tr>
             <th></th>
             <th>Beskrivning</th>
-            <th>Period</th>
-            <th>Tillbehör</th>
             <th>Status</th>
             <th>Serienummer</th>
             <th></th>
@@ -27,15 +55,6 @@
             </td>
             <td>
               <%= radio_loan.description %>
-            </td>
-            <td>
-              <%=l radio_loan.pickup, format: :short %> -
-              <%=l radio_loan.return, format: :short %>
-            </td>
-            <td>
-              <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
-              <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
-              <% if radio_loan.headset_accessory? %>Hörlur<% end %>
             </td>
             <td>
               <% case radio_loan.status when :returned %>

@@ -6,8 +6,6 @@
       <tr>
         <th>Serienummer</th>
         <th>Utlångsingsnamn</th>
-        <th>Period</th>
-        <th>Tillbehör</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -19,15 +17,6 @@
           </td>
           <td>
             <%= radio_loan.radio_order.description %> – <%= radio_loan.description %>
-          </td>
-          <td>
-            <%=l radio_loan.pickup, format: :short %> -
-            <%=l radio_loan.return, format: :short %>
-          </td>
-          <td>
-            <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
-            <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
-            <% if radio_loan.headset_accessory? %>Hörlur<% end %>
           </td>
           <td>
             <% case radio_loan.status when :returned %>
@@ -53,8 +42,6 @@
       <tr>
         <th>Serienummer</th>
         <th>Utlångsingsnamn</th>
-        <th>Period</th>
-        <th>Tillbehör</th>
         <th>Tillbakalämnad</th>
       </tr>
     </thead>
@@ -66,15 +53,6 @@
           </td>
           <td>
             <%= radio_loan.radio_order.description %> – <%= radio_loan.description %>
-          </td>
-          <td>
-            <%=l radio_loan.pickup, format: :short %> -
-            <%=l radio_loan.return, format: :short %>
-          </td>
-          <td>
-            <% if radio_loan.remote_speaker_accessory? %>Monofon<% end %>
-            <% if radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
-            <% if radio_loan.headset_accessory? %>Hörlur<% end %>
           </td>
           <td>
             <%=l radio_loan.returned_at, format: :short %>

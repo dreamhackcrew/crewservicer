@@ -6,17 +6,6 @@
     <dd>
       <%= @radio_order.description %> – <%= @radio_loan.description %>
     </dd>
-    <dt>Period</dt>
-    <dd>
-      <%=l @radio_loan.pickup, format: :short %> -
-      <%=l @radio_loan.return, format: :short %>
-    </dd>
-    <dt>Tillbehör</dt>
-    <dd>
-      <% if @radio_loan.remote_speaker_accessory? %>Monofon<% end %>
-      <% if @radio_loan.earpiece_accessory? %>Öronsnäcka<% end %>
-      <% if @radio_loan.headset_accessory? %>Hörlur<% end %>
-    </dd>
     <dt>Status</dt>
     <dd>
       <% case @radio_loan.status when :returned %>

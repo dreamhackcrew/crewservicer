@@ -3,9 +3,6 @@ class RadioLoan < ActiveRecord::Base
   belongs_to :radio
 
   validates_presence_of :description
-  validates_inclusion_of :remote_speaker_accessory, in: [ true, false ]
-  validates_inclusion_of :earpiece_accessory, in: [ true, false ]
-  validates_inclusion_of :headset_accessory, in: [ true, false ]
   validate :has_radio_when_picked_up
   validate :radio_not_overused
 

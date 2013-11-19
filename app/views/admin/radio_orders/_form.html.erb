@@ -16,14 +16,48 @@
       <%= f.text_field :description %>
     </label>
   </p>
+  <p>
+    <label>
+      <span class="label">Upphämtning</span>
+      <%= f.text_field :pickup_time, value: f.object.pickup_time %>
+    </label>
+  </p>
+  <p>
+    <label>
+      <span class="label">Tillbakalämning</span>
+      <%= f.text_field :return_time, value: f.object.return_time %>
+    </label>
+  </p>
+
+  <h2>Tillbehör</h2>
+  <table id="accessories">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Antal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monofoner</td>
+        <td class="full-field"><%= f.text_field :remote_speakers %></td>
+      </tr>
+      <tr>
+        <td>Snäckor</td>
+        <td class="full-field"><%= f.text_field :earpieces %></td>
+      </tr>
+      <tr>
+        <td>Hörlurar</td>
+        <td class="full-field"><%= f.text_field :headsets %></td>
+      </tr>
+    </tbody>
+  </table>
+
   <h2>Radios</h2>
   <table id="radio-loans">
     <thead>
       <tr>
           <th>Beskrivning</th>
-          <th>Upphämtning</th>
-          <th>Tillbakalämning</th>
-          <th>Tillbehör</th>
           <th></th>
       </tr>
     </thead>
@@ -32,17 +66,6 @@
         <tr>
           <td class="full-field">
             <%= rf.text_field :description %>
-          </td>
-          <td class="full-field">
-            <%= rf.text_field :pickup, value: rf.object.pickup %>
-          </td>
-          <td class="full-field">
-            <%= rf.text_field :return, value: rf.object.return %>
-          </td>
-          <td>
-            <label><%= rf.check_box :remote_speaker_accessory %> Monofon</label>
-            <label><%= rf.check_box :earpiece_accessory %> Öronsnäcka</label>
-            <label><%= rf.check_box :headset_accessory %> Hörlur</label>
           </td>
           <td>
             <%= rf.hidden_field :id %>

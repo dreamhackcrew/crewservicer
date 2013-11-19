@@ -15,6 +15,10 @@ sv:
             radio_id:
               already_in_use: används redan
               required_when_picked_up: måste anges vid utlämning
+        radio_order:
+          attributes:
+            return_time:
+              :must_be_after_pickup: måste vara efter utlämning
   enumerize:
     t_shirt_order:
       model:
