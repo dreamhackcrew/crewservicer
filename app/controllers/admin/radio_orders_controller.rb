@@ -1,6 +1,8 @@
 class Admin::RadioOrdersController < ApplicationController
   before_filter :require_administrator_privileges
   before_filter :set_radio_order, except: [ :index, :new, :create ]
+  before_filter :set_pickup_radio_loans, only: :equipment_pickup
+  before_filter :set_return_radio_loans, only: :equipment_return
 
   def index
     @radio_orders = @current_event.radio_orders.order('description ASC')
@@ -35,9 +37,25 @@ class Admin::RadioOrdersController < ApplicationController
     end
   end
 
-  def next_loan_status
-    if params[:pickup_radio_loan_ids]
-      RadioLoan.find(params[:pickup_radio_loan_ids]).each do |radio_loan|
+  def equipment_pickup
+  end
+
+  def equipment_return
+  end
+
+  def pickup_equipment
+    @radio_order.earpieces_picked_up += params[:earpieces].to_i
+    @radio_order.remote_speakers_picked_up += params[:remote_speakers].to_i
+    @radio_order.headsets_picked_up += params[:headsets].to_i
+
+    unless @radio_order.save
+      set_pickup_radio_loans
+      render action: :equipment_pickup
+      return
+    end
+
+    if params[:radio_loan_ids].present?
+      RadioLoan.find(params[:radio_loan_ids]).each do |radio_loan|
         next if radio_loan.radio_order_id != @radio_order.id
 
         radio_loan.picked_up_at = Time.now
@@ -45,8 +63,22 @@ class Admin::RadioOrdersController < ApplicationController
       end
     end
 
-    if params[:return_radio_loan_ids]
-      RadioLoan.find(params[:return_radio_loan_ids]).each do |radio_loan|
+    redirect_to admin_radio_order_path(@radio_order)
+  end
+
+  def return_equipment
+    @radio_order.earpieces_picked_up -= params[:earpieces].to_i
+    @radio_order.remote_speakers_picked_up -= params[:remote_speakers].to_i
+    @radio_order.headsets_picked_up -= params[:headsets].to_i
+
+    unless @radio_order.save
+      set_return_radio_loans
+      render action: :equipment_return
+      return
+    end
+
+    if params[:radio_loan_ids].present?
+      RadioLoan.find(params[:radio_loan_ids]).each do |radio_loan|
         next if radio_loan.radio_order_id != @radio_order.id
 
         radio_loan.returned_at = Time.now
@@ -61,6 +93,16 @@ class Admin::RadioOrdersController < ApplicationController
 
   def set_radio_order
     @radio_order = RadioOrder.includes(:radio_loans => [ :radio ]).find(params[:id])
+  end
+
+  def set_pickup_radio_loans
+    @prepared_radio_loans = @radio_order.radio_loans.where('radio_id IS NOT NULL AND picked_up_at IS NULL')
+    @other_radio_loans = @radio_order.radio_loans.where('radio_id IS NULL OR (radio_id IS NOT NULL AND picked_up_at IS NOT NULL)')
+  end
+
+  def set_return_radio_loans
+    @picked_up_radio_loans = @radio_order.radio_loans.where('picked_up_at IS NOT NULL AND returned_at IS NULL')
+    @other_radio_loans = @radio_order.radio_loans.where('picked_up_at IS NULL OR (picked_up_at IS NOT NULL AND returned_at IS NOT NULL)')
   end
 
   def radio_order_params

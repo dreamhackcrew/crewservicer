@@ -104,13 +104,10 @@ ActiveRecord::Schema.define(version: 20131117180801) do
     t.datetime "return_time",                           null: false
     t.integer  "earpieces",                 default: 0, null: false
     t.integer  "earpieces_picked_up",       default: 0, null: false
-    t.integer  "earpieces_returned",        default: 0, null: false
     t.integer  "remote_speakers",           default: 0, null: false
     t.integer  "remote_speakers_picked_up", default: 0, null: false
-    t.integer  "remote_speakers_returned",  default: 0, null: false
     t.integer  "headsets",                  default: 0, null: false
     t.integer  "headsets_picked_up",        default: 0, null: false
-    t.integer  "headsets_returned",         default: 0, null: false
   end
 
   add_index "radio_orders", ["event_id"], name: "index_radio_orders_on_event_id", using: :btree

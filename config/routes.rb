@@ -35,8 +35,10 @@ Crewservicer::Application.routes.draw do
 
       resources :radio_orders, path: 'radiobestallningar' do
         member do
-          post 'pickup', path: 'hamta'
-          post 'next_loan_status', path: 'nasta-status'
+          get 'equipment_pickup', path: 'lamna-ut'
+          post 'pickup_equipment', path: 'lamna-ut'
+          get 'equipment_return', path: 'lamna-tillbaka'
+          post 'return_equipment', path: 'lamna-tillbaka'
         end
 
         resources :radio_loans, only: [ :show ], path: 'radios' do

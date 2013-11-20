@@ -18,7 +18,13 @@ sv:
         radio_order:
           attributes:
             return_time:
-              :must_be_after_pickup: måste vara efter utlämning
+              must_be_after_pickup: måste vara efter utlämning
+            earpieces_picked_up:
+              must_not_exceed_available: kan inte överstiga tillgängliga
+            remote_speakers_picked_up:
+              must_not_exceed_available: kan inte överstiga tillgängliga
+            headsets_picked_up:
+              must_not_exceed_available: kan inte överstiga tillgängliga
   enumerize:
     t_shirt_order:
       model:

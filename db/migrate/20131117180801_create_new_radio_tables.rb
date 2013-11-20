@@ -8,13 +8,10 @@ class CreateNewRadioTables < ActiveRecord::Migration
       t.datetime :return_time, null: false
       t.integer :earpieces, null: false, default: 0
       t.integer :earpieces_picked_up, null: false, default: 0
-      t.integer :earpieces_returned, null: false, default: 0
       t.integer :remote_speakers, null: false, default: 0
       t.integer :remote_speakers_picked_up, null: false, default: 0
-      t.integer :remote_speakers_returned, null: false, default: 0
       t.integer :headsets, null: false, default: 0
       t.integer :headsets_picked_up, null: false, default: 0
-      t.integer :headsets_returned, null: false, default: 0
     end
 
     add_index :radio_orders, :event_id
