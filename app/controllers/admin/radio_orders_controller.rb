@@ -99,7 +99,7 @@ class Admin::RadioOrdersController < ApplicationController
   private
 
   def set_radio_order
-    @radio_order = RadioOrder.includes(:radio_loans => [ :radio ]).find(params[:id])
+    @radio_order = RadioOrder.includes(:radio_loans => [ :radio ]).order('radio_loans.description').find(params[:id])
   end
 
   def set_pickup_radio_loans
