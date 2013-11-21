@@ -1,0 +1,49 @@
+@import "../variables";
+@import "../mixins";
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  tr {
+    border-bottom: 2px solid $black;
+  }
+}
+
+table {
+  border: 1px solid $black;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  vertical-align: top;
+}
+
+td + td, th + th {
+  border-left: 1px solid $black;
+}
+
+th, td, td.full-field input[type=text] {
+  padding: 0 10px 0;
+  line-height: 30px;
+}
+
+td.full-field input[type=text] {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  width: 100%;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+td.full-field {
+  padding: 0;
+}

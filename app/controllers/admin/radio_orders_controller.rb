@@ -42,6 +42,10 @@ class Admin::RadioOrdersController < ApplicationController
     end
   end
 
+  def delivery_note
+    render layout: false
+  end
+
   def equipment_pickup
   end
 

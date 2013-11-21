@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Crewinfo</title>
+    <%= stylesheet_link_tag "print", :media => "all" %>
+    <%= csrf_meta_tags %>
+    <link rel="apple-touch-icon" href="<%= image_path 'dreamhack-touch-icon.png' %>">
+  </head>
+  <body>
+    <h1>Följesedel radiobeställning</h1>
+
+    <dl>
+      <dt>Beskrivning</dt>
+      <dd><strong><%= @radio_order.description %></strong></dd>
+      <dt>Hämtas upp</dt>
+      <dd><strong><%=l @radio_order.pickup_time, format: :short %></strong></dd>
+      <dt>Lämnas tillbaka senast</dt>
+      <dd><strong><%=l @radio_order.return_time, format: :short %></strong></dd>
+    </dl>
+
+    <h2>Utrustning</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Enhet</th>
+          <th>Benämning</th>
+          <th>Serienummer</th>
+          <th>Antal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @radio_order.radio_loans.each do |radio_loan| %>
+          <tr>
+            <td>
+              Radio
+            </td>
+            <td>
+              <%= radio_loan.description %>
+            </td>
+            <td>
+              <% if radio_loan.radio %>
+                <%= radio_loan.radio.serial_number %>
+              <% else %>
+                –
+              <% end %>
+            </td>
+            <td>1 st</td>
+          </tr>
+        <% end %>
+        <% if @radio_order.remote_speakers > 0 %>
+          <tr>
+            <td>Monofon</td>
+            <td></td>
+            <td></td>
+            <td><%= @radio_order.remote_speakers %> st</td>
+          </tr>
+        <% end %>
+        <% if @radio_order.earpieces > 0 %>
+          <tr>
+            <td>Snäckor</td>
+            <td></td>
+            <td></td>
+            <td><%= @radio_order.earpieces %> st</td>
+          </tr>
+        <% end %>
+        <% if @radio_order.headsets > 0 %>
+          <tr>
+            <td>Hörlurar</td>
+            <td></td>
+            <td></td>
+            <td><%= @radio_order.headsets %></td>
+          </tr>
+        <% end %>
+        <% if @radio_order.charging_stations %>
+          <tr>
+            <td>Laddstationer</td>
+            <td></td>
+            <td></td>
+            <td><%= @radio_order.charging_stations %> st</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>

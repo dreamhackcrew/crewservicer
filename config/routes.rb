@@ -35,6 +35,7 @@ Crewservicer::Application.routes.draw do
 
       resources :radio_orders, path: 'radiobestallningar' do
         member do
+          get 'delivery_note', path: 'foljesedel'
           get 'equipment_pickup', path: 'lamna-ut'
           post 'pickup_equipment', path: 'lamna-ut'
           get 'equipment_return', path: 'lamna-tillbaka'

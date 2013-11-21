@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Dreamhack Normal';
+  src: asset-url("dreamhack_normal.eot", font);
+  src: asset-url('dreamhack_normal.eot?#iefix', font) format('embedded-opentype'),
+       asset-url('dreamhack_normal.woff', font) format('woff'),
+       asset-url('dreamhack_normal.ttf', font) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dreamhack Thin';
+  src: asset-url('dreamhack_thin.eot', font);
+  src: asset-url('dreamhack_thin.eot?#iefix', font) format('embedded-opentype'),
+       asset-url('dreamhack_thin.woff', font) format('woff'),
+       asset-url('dreamhack_thin.ttf', font) format('truetype'),
+       asset-url('dreamhack_thin.svg#microgrammadmedextregular', font) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

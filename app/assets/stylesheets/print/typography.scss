@@ -1,0 +1,69 @@
+@import "../variables";
+@import "../mixins";
+
+body {
+  font-family: "Helvetica", sans-serif;
+  font-size: 8pt;
+  color: $black
+}
+
+p, h1, h2, h3, h4, ul, dl {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  & + p, & + ul, & + dl {
+    margin-top: 10px;
+  }
+
+  & + .content-columns {
+    margin-top: 20px;
+  }
+}
+
+p {
+  & + p, & + ul, & + dl {
+    margin-top: 10px;
+  }
+
+  & + h1, & + h2, & + h3, & + h4 {
+    margin-top: 20px;
+  }
+}
+
+dl {
+  & + h1, & + h2, & + h3, & + h4 {
+    margin-top: 20px;
+  }
+}
+
+dt {
+  float: left;
+  width: 15em;
+}
+
+dd + dt, dd + dt + dd {
+  margin-top: 10px;
+}
+
+.content-columns {
+  & + p {
+    margin-top: 20px;
+  }
+}
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+}
+
+h1 {
+  @include font-dreamhack-thin;
+}
+
+h2, h3, h4 {
+  @include font-dreamhack-thin;
+}
+
+a:link, a:visited {
+  color: $white;
+}
