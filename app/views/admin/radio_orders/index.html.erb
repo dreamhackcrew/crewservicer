@@ -20,7 +20,8 @@
               <a href="<%= admin_radio_order_path(radio_order) %>"><%= radio_order.description %></a>
             </td>
             <td>
-                <%=l radio_order.pickup_time, format: :short %> - <%=l radio_order.return_time, format: :short %>
+                <%=l radio_order.pickup_time, format: :short %> -<br>
+                <%=l radio_order.return_time, format: :short %>
             </td>
             <td>
               <%= @radio_loan_counts[radio_order.id] || 0 %> st
@@ -42,7 +43,7 @@
                 Hörlurar: <%= radio_order.headsets %> st, <%= radio_order.headsets_picked_up %> st utl.<br>
               <% end %>
               <% if radio_order.charging_stations > 0 %>
-                Laddstationer: <%= radio_order.charging_stations %> st, <%= radio_order.charging_stations_picked_up %> st utl.<br>
+                Laddstat.: <%= radio_order.charging_stations %> st, <%= radio_order.charging_stations_picked_up %> st utl.<br>
               <% end %>
             </td>
           </tr>
