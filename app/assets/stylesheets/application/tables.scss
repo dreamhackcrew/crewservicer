@@ -17,6 +17,10 @@ th {
   text-align: left;
 }
 
+td {
+  vertical-align: top;
+}
+
 tbody {
   tr:nth-child(odd) {
     background: $midgrey;
