@@ -115,6 +115,11 @@
           <td><%= @radio_order.headsets_available %></td>
           <td class="full-field"><%= text_field_tag :headsets, params[:headsets] %></td>
         </tr>
+        <tr>
+          <td>Laddstationer</td>
+          <td><%= @radio_order.charging_stations_available %></td>
+          <td class="full-field"><%= text_field_tag :charging_stations, params[:charging_stations] %></td>
+        </tr>
       </tbody>
     </table>
 

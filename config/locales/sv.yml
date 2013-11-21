@@ -25,6 +25,8 @@ sv:
               must_not_exceed_available: kan inte överstiga tillgängliga
             headsets_picked_up:
               must_not_exceed_available: kan inte överstiga tillgängliga
+            charging_stations_picked_up:
+              must_not_exceed_available: kan inte överstiga tillgängliga
   enumerize:
     t_shirt_order:
       model:

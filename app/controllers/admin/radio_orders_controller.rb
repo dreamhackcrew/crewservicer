@@ -47,6 +47,7 @@ class Admin::RadioOrdersController < ApplicationController
     @radio_order.earpieces_picked_up += params[:earpieces].to_i
     @radio_order.remote_speakers_picked_up += params[:remote_speakers].to_i
     @radio_order.headsets_picked_up += params[:headsets].to_i
+    @radio_order.charging_stations_picked_up += params[:charging_stations].to_i
 
     unless @radio_order.save
       set_pickup_radio_loans
@@ -70,6 +71,7 @@ class Admin::RadioOrdersController < ApplicationController
     @radio_order.earpieces_picked_up -= params[:earpieces].to_i
     @radio_order.remote_speakers_picked_up -= params[:remote_speakers].to_i
     @radio_order.headsets_picked_up -= params[:headsets].to_i
+    @radio_order.charging_stations_picked_up -= params[:charging_stations].to_i
 
     unless @radio_order.save
       set_return_radio_loans
@@ -113,6 +115,7 @@ class Admin::RadioOrdersController < ApplicationController
       :remote_speakers,
       :earpieces,
       :headsets,
+      :charging_stations,
       { radio_loans_attributes: [ :id, :_destroy, :description ] }
     )
   end

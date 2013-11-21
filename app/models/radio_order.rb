@@ -6,9 +6,10 @@ class RadioOrder < ActiveRecord::Base
 
   validates_presence_of :description, :pickup_time, :return_time, :remote_speakers,
                         :remote_speakers_picked_up, :earpieces, :earpieces_picked_up,
-                        :headsets, :headsets_picked_up
+                        :headsets, :headsets_picked_up, :charging_stations,
+                        :charging_stations_picked_up
   validate :return_after_pickup, :earpieces_not_exceeded, :remote_speakers_not_exceeded,
-           :headsets_not_exceeded
+           :headsets_not_exceeded, :charging_stations_not_exceeded
 
 
   def earpieces_available
@@ -21,6 +22,10 @@ class RadioOrder < ActiveRecord::Base
 
   def headsets_available
     headsets - headsets_picked_up
+  end
+
+  def charging_stations_available
+    charging_stations - charging_stations_picked_up
   end
 
   private
@@ -41,5 +46,9 @@ class RadioOrder < ActiveRecord::Base
 
   def headsets_not_exceeded
     errors.add(:headsets_picked_up, :must_not_exceed_available) if headsets_available < 0
+  end
+
+  def charging_stations_not_exceeded
+    errors.add(:charging_stations_picked_up, :must_not_exceed_available) if charging_stations_available < 0
   end
 end
