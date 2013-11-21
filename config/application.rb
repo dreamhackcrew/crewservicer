@@ -37,7 +37,7 @@ module Crewservicer
     config.active_support.escape_html_entities_in_json = true
 
     # Enable the asset pipeline
-    config.assets.precompile += [ 'admin.js', 'admin.css', 'slideshow.js', 'slideshow.css' ]
+    config.assets.precompile += [ 'admin.js', 'admin.css', 'slideshow.js', 'slideshow.css', 'print.css' ]
 
     config.exceptions_app = self.routes
   end
