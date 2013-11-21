@@ -12,19 +12,18 @@
   <% if @event_info.nil? %>
     <p><%= @cco_user.username %> har inte angivit eventinfo.</p>
   <% else %>
-    <dl>
-      <dt>Incheckad</dt>
-      <dd>
-        <% if @event_info.checkedin %>
-          Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %>
-        <% else %>
-          Nej
-          <%= form_tag check_in_admin_person_path do %>
-            <input type="submit" value="Checka in">
+    <%= form_tag check_in_admin_person_path do %>
+      <dl>
+        <dt>Incheckad</dt>
+        <dd>
+          <% if @event_info.checkedin %>
+            Ja, <%=l @event_info.checkedin_at, format: :short %> av <%= @event_info.checkedin_by %>
+          <% else %>
+            Nej <input type="submit" value="Checka in">
           <% end %>
-        <% end %>
-      </dd>
-    </dl>
+        </dd>
+      </dl>
+    <% end %>
   <% end %>
 </section>
 

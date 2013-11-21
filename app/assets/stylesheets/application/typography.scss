@@ -4,7 +4,7 @@
 body {
   font-family: "Helvetica", sans-serif;
   font-size: $font-size-helvetica-normal;
-  color: $white
+  color: $white;
 }
 
 p, h1, h2, h3, h4, ul, dl {
@@ -29,6 +29,21 @@ p {
   & + h1, & + h2, & + h3, & + h4 {
     margin-top: 20px;
   }
+}
+
+dl {
+  & + h1, & + h2, & + h3, & + h4 {
+    margin-top: 20px;
+  }
+}
+
+dt {
+  float: left;
+  width: 15em;
+}
+
+dd + dt, dd + dt + dd {
+  margin-top: 10px;
 }
 
 .content-columns {
