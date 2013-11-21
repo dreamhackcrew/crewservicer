@@ -108,12 +108,12 @@
         <tr>
           <td>Snäckor</td>
           <td><%= @radio_order.earpieces_picked_up %></td>
-          <td class="full-field"><%= text_field_tag :earpieces %></td>
+          <td class="full-field"><%= text_field_tag :earpieces, params[:earpieces] %></td>
         </tr>
         <tr>
           <td>Hörlurar</td>
           <td><%= @radio_order.headsets_picked_up %></td>
-          <td class="full-field"><%= text_field_tag :headsets %></td>
+          <td class="full-field"><%= text_field_tag :headsets, params[:headsets] %></td>
         </tr>
       </tbody>
     </table>
