@@ -5,7 +5,12 @@ class Admin::RadioOrdersController < ApplicationController
   before_filter :set_return_radio_loans, only: :equipment_return
 
   def index
-    @radio_orders = @current_event.radio_orders.order('description ASC')
+    @radio_orders = @current_event.radio_orders.order('pickup_time ASC, description ASC')
+    @radio_loan_counts = @current_event.radio_orders.includes(:radio_loans).references(:radio_loans).group('radio_orders.id').count('radio_loans.id')
+    @prepared_radio_loan_counts = @current_event.radio_orders.includes(:radio_loans).references(:radio_loans)
+      .where('radio_loans.radio_id IS NOT NULL').group('radio_orders.id').count('radio_loans.id')
+    @picked_up_radio_loan_counts = @current_event.radio_orders.includes(:radio_loans).references(:radio_loans)
+      .where('radio_loans.picked_up_at IS NOT NULL AND radio_loans.returned_at IS NULL').group('radio_orders.id').count('radio_loans.id')
   end
 
   def show

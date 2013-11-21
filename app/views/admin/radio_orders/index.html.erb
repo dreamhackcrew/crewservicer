@@ -5,7 +5,12 @@
     <table id="dishes">
       <thead>
         <tr>
-            <th>Beskrivning</th>
+          <th>Beskrivning</th>
+          <th>Period</th>
+          <th>Radios</th>
+          <th><abbr title="Förberedda radios">Förb.</abbr></th>
+          <th><abbr title="Utlämnade radios">Utl.</abbr></th>
+          <th>Tillbehör</th>
         </tr>
       </thead>
       <tbody>
@@ -13,6 +18,32 @@
           <tr>
             <td>
               <a href="<%= admin_radio_order_path(radio_order) %>"><%= radio_order.description %></a>
+            </td>
+            <td>
+                <%=l radio_order.pickup_time, format: :short %> - <%=l radio_order.return_time, format: :short %>
+            </td>
+            <td>
+              <%= @radio_loan_counts[radio_order.id] || 0 %> st
+            </td>
+            <td>
+              <%= @prepared_radio_loan_counts[radio_order.id] || 0 %> st
+            </td>
+            <td>
+              <%= @picked_up_radio_loan_counts[radio_order.id] || 0 %> st
+            </td>
+            <td>
+              <% if radio_order.remote_speakers > 0 %>
+                Monofoner: <%= radio_order.remote_speakers %> st, <%= radio_order.remote_speakers_picked_up %> st utl.<br>
+              <% end %>
+              <% if radio_order.earpieces > 0 %>
+                Öronsnäckor: <%= radio_order.earpieces %> st, <%= radio_order.earpieces_picked_up %> st utl.<br>
+              <% end %>
+              <% if radio_order.headsets > 0 %>
+                Hörlurar: <%= radio_order.headsets %> st, <%= radio_order.headsets_picked_up %> st utl.<br>
+              <% end %>
+              <% if radio_order.charging_stations > 0 %>
+                Laddstationer: <%= radio_order.charging_stations %> st, <%= radio_order.charging_stations_picked_up %> st utl.<br>
+              <% end %>
             </td>
           </tr>
         <% end %>
