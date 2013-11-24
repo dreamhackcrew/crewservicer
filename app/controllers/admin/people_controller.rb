@@ -12,6 +12,7 @@ class Admin::PeopleController < ApplicationController
   def show
     @event_info = CrewCorner::EventInfo.find(params[:id], @current_event.cco_id, access_token: @cco_access_token)
     @person = Person.find_or_update_by_cco_user(@cco_user)
+    @t_shirt_orders = @person.t_shirt_orders.where(event: @current_event)
   end
 
   def pick_up_t_shirt

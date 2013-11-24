@@ -29,9 +29,9 @@
 
 <section class="content">
   <h2>Beställda t-shirts</h2>
-  <% if @person.t_shirt_orders.size > 0 %>
+  <% if @t_shirt_orders.size > 0 %>
     <ul>
-      <% @person.t_shirt_orders.each do |order| %>
+      <% @t_shirt_orders.each do |order| %>
         <li>
           <%= order.model_text %> – <%= order.size_text %>
           <% if order.picked_up_at %>
